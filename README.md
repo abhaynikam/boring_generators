@@ -22,7 +22,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Boring generator adds following set of generators for Rails to delegate boring tasks to the generator.
+
+#### Tailwind
+```
+rails generate tailwind:install
+```
 
 ## Development
 
