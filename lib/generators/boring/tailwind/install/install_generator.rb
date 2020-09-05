@@ -3,7 +3,7 @@
 module Boring
   module Tailwind
     class InstallGenerator < Rails::Generators::Base
-      desc "Generator to install TailwindCSS to the application"
+      desc "Adds Tailwind CSS to the application"
       source_root File.expand_path("templates", __dir__)
 
       class_option :skip_tailwind_css_ui,    type: :boolean, aliases: "-sui",
