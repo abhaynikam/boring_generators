@@ -1,7 +1,7 @@
 require_relative 'lib/boring_generators/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "boring_generators"
+  spec.name          = "boring-generators"
   spec.version       = BoringGenerators::VERSION
   spec.authors       = ["Abhay Nikam"]
   spec.email         = ["nikam.abhay1@gmail.com"]
