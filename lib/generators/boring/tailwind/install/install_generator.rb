@@ -57,7 +57,7 @@ module Boring
           end
 
           insert_into_file "app/views/layouts/application.html.erb", <<~RUBY, after: /stylesheet_link_tag.*\n/
-            <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+            \t\t<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
           RUBY
         end
       end
