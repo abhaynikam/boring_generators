@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('lib/boring_generators/cli', Dir.pwd)
+BoringGenerators::CLI.start
