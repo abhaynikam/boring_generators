@@ -25,6 +25,7 @@ Or install it yourself as:
 The boring generator introduces following generators:
 - Install Tailwind CSS: `rails generate boring:tailwind:install`
 - Install Bootstrap: `rails generate boring:bootstrap:install`
+- Install JQuery: `rails generate boring:jquery:install`
 
 ## Development
 
