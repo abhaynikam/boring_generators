@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "boring/generators/tailwind/install/install_generator"
+require "generators/boring/tailwind/install/install_generator"
 
 class TailwindInstallGeneratorTest < Rails::Generators::TestCase
-  tests Boring::Generators::Tailwind::Install::InstallGenerator
+  tests Boring::Tailwind::InstallGenerator
   setup :build_app
   teardown :teardown_app
 
@@ -78,13 +78,34 @@ class TailwindInstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  def test_should_warning_about_missing_application_js
+  def test_should_append_tailwind_imports_to_the_application_scss_file
     Dir.chdir(app_path) do
-      FileUtils.rm_rf("app/javascript/packs/application.js")
+      FileUtils.mkdir("#{app_path}/app/javascript/stylesheets")
+      FileUtils.touch("#{app_path}/app/javascript/stylesheets/application.scss")
 
-      assert_raises do
-        quietly { run_generator }
+      quietly { run_generator }
+
+      assert_file "app/javascript/stylesheets/application.scss" do |content|
+        assert_match(/tailwindcss\/base/, content)
+        assert_match(/tailwindcss\/components/, content)
+        assert_match(/tailwindcss\/utilities/, content)
       end
     end
+  end
+
+  def test_should_warning_about_missing_application_js
+    original_stdout = $stdout
+    $stdout = StringIO.new
+
+    Dir.chdir(app_path) do
+      FileUtils.rm_rf("#{app_path}/app/javascript/packs/application.js")
+
+      expected = "ERROR: Looks like the webpacker installation is incomplete. Could not find application.js in app/javascript/packs."
+      generator.insert_stylesheet_in_the_application
+      $stdout.rewind
+      assert_match expected, $stdout.read
+    end
+  ensure
+    $stdout = original_stdout
   end
 end

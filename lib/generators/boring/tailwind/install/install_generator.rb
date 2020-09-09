@@ -37,29 +37,37 @@ module Boring
 
       def add_or_import_stylesheet_for_tailwind
         if File.exist?("app/javascript/stylesheets/application.scss")
-          say "Add tailwindcss imports to the application.scss", :green
-          append_to_file "app/javascript/stylesheets/application.scss" do
-            '@import "tailwindcss/base";'
-            '@import "tailwindcss/components";'
-            '@import "tailwindcss/utilities";'
+          say "Add TailwindCSS imports to the application.scss", :green
+          stylesheet_tailwind_imports = <<~RUBY
+            \n
+            @import "tailwindcss/base";
+            @import "tailwindcss/components";
+            @import "tailwindcss/utilities";
+          RUBY
 
+          append_to_file "app/javascript/stylesheets/application.scss", stylesheet_tailwind_imports
+        else
+          say "Copying application.scss with Tailwind imports", :green
+          template("application.scss", "app/javascript/stylesheets/application.scss")
+        end
+      end
+
+      def insert_stylesheet_in_the_application
+        if File.exist?("app/javascript/packs/application.js")
+          append_to_file "app/javascript/packs/application.js" do
+            'import "stylesheets/application"'
           end
         else
-          say "Copying application.scss with tailwind imports", :green
-          template("application.scss", "app/javascript/stylesheets/application.scss")
-
-          if File.exist?("app/javascript/packs/application.js")
-            append_to_file "app/javascript/packs/application.js" do
-              'import "stylesheets/application"'
-            end
-          else
-            raise "Looks like the webpacker installation is incomplete. Could not find application.js in app/javascript/packs."
-          end
-
-          insert_into_file "app/views/layouts/application.html.erb", <<~RUBY, after: /stylesheet_link_tag.*\n/
-            \t\t<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-          RUBY
+          say <<~WARNING, :red
+            ERROR: Looks like the webpacker installation is incomplete. Could not find application.js in app/javascript/packs.
+          WARNING
         end
+      end
+
+      def insert_stylesheet_packs_tag
+        insert_into_file "app/views/layouts/application.html.erb", <<~RUBY, after: /stylesheet_link_tag.*\n/
+          \t\t<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+        RUBY
       end
     end
   end
