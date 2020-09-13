@@ -40,7 +40,6 @@ class BootstrapInstallGeneratorTest < Rails::Generators::TestCase
         assert_match(/bootstrap\/scss\/bootstrap/, content)
       end
 
-
       assert_file "app/javascript/packs/application.js" do |content|
         assert_match(/stylesheets\/application/, content)
         assert_match(/bootstrap/, content)

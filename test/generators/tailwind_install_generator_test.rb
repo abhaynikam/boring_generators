@@ -72,7 +72,7 @@ class TailwindInstallGeneratorTest < Rails::Generators::TestCase
       end
 
       assert_file "tailwind.config.js" do |content|
-        expected = "module.exports = {\n  purge: [],\n  theme: {\n    extend: {},\n  },\n  variants: {},\n  plugins: [],\n}\n"
+        expected = "module.exports = {\n  future: {\n    // removeDeprecatedGapUtilities: true,\n    // purgeLayersByDefault: true,\n  },\n  purge: [],\n  theme: {\n    extend: {},\n  },\n  variants: {},\n  plugins: [],\n}\n"
         assert_match(expected, content)
       end
     end
