@@ -26,6 +26,8 @@ The boring generator introduces following generators:
 - Install Tailwind CSS: `rails generate boring:tailwind:install`
 - Install Bootstrap: `rails generate boring:bootstrap:install`
 - Install JQuery: `rails generate boring:jquery:install`
+- Install FontAwesome via Yarn: `rails generate boring:font_awesome:yarn:install`
+- Install FontAwesome via RubyGems: `rails generate boring:font_awesome:ruby_gem:install`
 
 ## Development
 
