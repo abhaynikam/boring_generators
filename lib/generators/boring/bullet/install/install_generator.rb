@@ -10,7 +10,7 @@ module Boring
                                         desc: "Skips adding bullet development configuration"
 
       def add_bullet_gem
-        say "Adding font_awesome_sass gem", :green
+        say "Adding Bullet gem", :green
         bullet_gem_content = <<~RUBY
           \n
           \t# reports N+1 queries

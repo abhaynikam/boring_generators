@@ -29,6 +29,7 @@ The boring generator introduces following generators:
 - Install FontAwesome via Yarn: `rails generate boring:font_awesome:yarn:install`
 - Install FontAwesome via RubyGems: `rails generate boring:font_awesome:ruby_gem:install`
 - Install Bullet: `rails generate boring:bullet:install`
+- Install Audit gems(bundler-audit, ruby_audit): `rails generate boring:audit:install`
 
 ## Development
 
