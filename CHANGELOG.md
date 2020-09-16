@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-## 0.1.0 (September 16th, 2020)
+## 0.2.0 (September 16th, 2020)
 * Adds JQuery install generator. ([@abhaynikam][])
 * Adds Bootstrap install generator. ([@abhaynikam][])
 * Adds FontAwesome install generator via Yarn. ([@abhaynikam][])
