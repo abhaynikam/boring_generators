@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+require "json"
+
+if defined?(Rails)
+  # https://wiki.hackzine.org/development/misc/readline-color-prompt.html
+  Pry.config.prompt_name = if Rails.env.production?
+    "\001\e[0m\002PROD"
+  else
+    "\001\e[0m\002dev"
+  end
+end
+Pry.config.pager = false
+
+def define_byebug_aliases!
+  if defined?(PryByebug)
+    Pry.commands.alias_command "c", "continue"
+    Pry.commands.alias_command "s", "step"
+    Pry.commands.alias_command "n", "next"
+    Pry.commands.alias_command "f", "finish"
+  end
+end
+
+extend Rails::ConsoleMethods if defined?(Rails::ConsoleMethods)

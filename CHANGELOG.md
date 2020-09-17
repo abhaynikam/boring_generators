@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Adds Bullet install generator. ([@abhaynikam][])
 * Adds Audit gems(bundler-audit, ruby_audit) install generator. ([@abhaynikam][])
+* Adds Pry install generator. ([@abhaynikam][])
 
 ## 0.2.0 (September 16th, 2020)
 * Adds JQuery install generator. ([@abhaynikam][])
