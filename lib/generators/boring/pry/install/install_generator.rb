@@ -16,7 +16,7 @@ module Boring
         RUBY
         append_to_file "Gemfile", pry_gem_content
         run "bundle install"
-      endgst
+      end
 
       def add_pryrc_configuration
         return if options[:skip_configuration]
