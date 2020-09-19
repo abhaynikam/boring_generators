@@ -6,6 +6,7 @@
 * Adds Pry install generator. ([@abhaynikam][])
 * Adds Active Storage Google install generator. ([@abhaynikam][])
 * Adds Active Storage AWS install generator. ([@abhaynikam][])
+* Adds Active Storage Microsoft Azure install generator. ([@abhaynikam][])
 
 ## 0.2.0 (September 16th, 2020)
 * Adds JQuery install generator. ([@abhaynikam][])

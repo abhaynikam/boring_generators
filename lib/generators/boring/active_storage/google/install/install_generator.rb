@@ -15,7 +15,7 @@ module Boring
         end
 
         def add_google_cloud_storage_to_the_application
-          say "Adding Bullet gem", :green
+          say "Adding google cloud storage gem", :green
           google_cloud_storage_gem_content = <<~RUBY
             \n
             # for Google Cloud Storage Service
