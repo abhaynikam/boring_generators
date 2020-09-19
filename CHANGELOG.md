@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.3.0 (September 19th, 2020)
 * Adds Bullet install generator. ([@abhaynikam][])
 * Adds Audit gems(bundler-audit, ruby_audit) install generator. ([@abhaynikam][])
 * Adds Pry install generator. ([@abhaynikam][])
