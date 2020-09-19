@@ -5,6 +5,7 @@
 * Adds Audit gems(bundler-audit, ruby_audit) install generator. ([@abhaynikam][])
 * Adds Pry install generator. ([@abhaynikam][])
 * Adds Active Storage Google install generator. ([@abhaynikam][])
+* Adds Active Storage AWS install generator. ([@abhaynikam][])
 
 ## 0.2.0 (September 16th, 2020)
 * Adds JQuery install generator. ([@abhaynikam][])

@@ -1,8 +1,8 @@
 module Boring
   module ActiveStorage
-    module Google
+    module Aws
       class InstallGenerator < Rails::Generators::Base
-        desc "Adds ActiveStorage google cloud service the application"
+        desc "Adds ActiveStorage AWS service the application"
 
         class_option :skip_active_storage, type: :boolean, aliases: "-s",
                                            desc: "Skips running ActiveStorage installer"
@@ -14,28 +14,29 @@ module Boring
           end
         end
 
-        def add_google_cloud_storage_to_the_application
-          say "Adding Bullet gem", :green
-          google_cloud_storage_gem_content = <<~RUBY
+        def add_aws_to_the_application
+          say "Adding AWS gem", :green
+          aws_gem_content = <<~RUBY
             \n
-            # for Google Cloud Storage Service
-            gem "google-cloud-storage", require: false
+            # for AWS Service
+            gem "aws-sdk-s3", require: false
           RUBY
-          append_to_file "Gemfile", google_cloud_storage_gem_content
+          append_to_file "Gemfile", aws_gem_content
           run "bundle install"
         end
 
         def add_configuration_to_production
           gsub_file "config/environments/production.rb",
                     "config.active_storage.service = :local",
-                    "config.active_storage.service = :google"
+                    "config.active_storage.service = :amazon"
         end
 
-        def uncomment_google_storage_configuration
-          uncomment_lines 'config/storage.yml', "google:"
-          uncomment_lines 'config/storage.yml', "service: GCS", verbose: false
-          uncomment_lines 'config/storage.yml', "project", verbose: false
-          uncomment_lines 'config/storage.yml', 'credentials: <%=', verbose: false
+        def uncomment_aws_storage_configuration
+          uncomment_lines 'config/storage.yml', "amazon:"
+          uncomment_lines 'config/storage.yml', "service: S3", verbose: false
+          uncomment_lines 'config/storage.yml', "access_key_id:", verbose: false
+          uncomment_lines 'config/storage.yml', 'secret_access_key: <%=', verbose: false
+          uncomment_lines 'config/storage.yml', 'region:', verbose: false
           uncomment_lines 'config/storage.yml', "bucket", verbose: false
         end
       end

@@ -32,6 +32,7 @@ The boring generator introduces following generators:
 - Install Audit gems(bundler-audit, ruby_audit): `rails generate boring:audit:install`
 - Install Pry gems for easy debugging: `rails generate boring:pry:install`
 - Install Active Storage for Google Cloud Service: `rails generate boring:active_storage:google:install`
+- Install Active Storage for AWS: `rails generate boring:active_storage:aws:install`
 
 ## Development
 
