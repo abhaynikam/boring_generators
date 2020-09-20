@@ -31,12 +31,16 @@ module Boring
                     "config.active_storage.service = :google"
         end
 
-        def uncomment_google_storage_configuration
-          uncomment_lines 'config/storage.yml', "google:"
-          uncomment_lines 'config/storage.yml', "service: GCS", verbose: false
-          uncomment_lines 'config/storage.yml', "project", verbose: false
-          uncomment_lines 'config/storage.yml', 'credentials: <%=', verbose: false
-          uncomment_lines 'config/storage.yml', "bucket", verbose: false
+        def add_google_storage_configuration
+          google_storage_config_content = <<~RUBY
+            google:
+              service: GCS
+              project: your_project
+              credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
+              bucket: your_own_bucket
+          RUBY
+
+          append_to_file "config/storage.yml", google_storage_config_content
         end
       end
     end

@@ -31,13 +31,16 @@ module Boring
                     "config.active_storage.service = :amazon"
         end
 
-        def uncomment_aws_storage_configuration
-          uncomment_lines 'config/storage.yml', "amazon:"
-          uncomment_lines 'config/storage.yml', "service: S3", verbose: false
-          uncomment_lines 'config/storage.yml', "access_key_id:", verbose: false
-          uncomment_lines 'config/storage.yml', 'secret_access_key: <%=', verbose: false
-          uncomment_lines 'config/storage.yml', 'region:', verbose: false
-          uncomment_lines 'config/storage.yml', "bucket", verbose: false
+        def add_aws_storage_configuration
+          aws_storage_config_content = <<~RUBY
+            amazon:
+              service: S3
+              access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+              secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+              region: us-east-1
+              bucket: your_own_bucket
+          RUBY
+          append_to_file "config/storage.yml", aws_storage_config_content
         end
       end
     end

@@ -31,12 +31,16 @@ module Boring
                     "config.active_storage.service = :microsoft"
         end
 
-        def uncomment_azure_storage_configuration
-          uncomment_lines 'config/storage.yml', "microsoft:"
-          uncomment_lines 'config/storage.yml', "service: AzureStorage", verbose: false
-          uncomment_lines 'config/storage.yml', "storage_account_name:", verbose: false
-          uncomment_lines 'config/storage.yml', 'storage_access_key:', verbose: false
-          uncomment_lines 'config/storage.yml', "container:", verbose: false
+        def add_azure_storage_configuration
+          microsoft_storage_config_content = <<~RUBY
+            microsoft:
+              service: AzureStorage
+              storage_account_name: your_account_name
+              storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
+              container: your_container_name
+          RUBY
+
+          append_to_file "config/storage.yml", microsoft_storage_config_content
         end
       end
     end

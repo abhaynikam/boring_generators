@@ -1,8 +1,8 @@
 # BoringGenerators
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/boring_generators`. To experiment with that code, run `bin/console` for an interactive prompt.
+Have you ever started a new adventure/hobby project of your and instead of spending time in solving the actual problem statement with the website ended up configuring the application and put a lot of effort into it. Yeah, We felt that too. Boring generator tries to resolve the painful same redundant configuration you do in every application by adding generators to easily configure it.
 
-TODO: Delete this and the text above, and describe your gem
+Check out the generator we support right now. We are planning to add support to most of the mostly used and required gems. We are open to any idea of yours, feel free to raise a discussion by opening up an issue or try contributing.
 
 ## Installation
 
@@ -44,7 +44,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/abhaynikam/boring_generators. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/abhaynikam/boring_generators/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
