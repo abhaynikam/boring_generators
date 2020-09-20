@@ -1,0 +1,61 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.1
+  <% unless @skip_node do %>
+    node: circleci/node@2
+  <% end %>
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:<%= @ruby_version %>-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      <% unless @skip_node do %>
+        # Store bundle cache
+        - node/install-packages:
+            pkg-manager: yarn
+            cache-key: "yarn.lock"
+      <% end %>
+  test:
+    parallelism: 3
+    docker:
+      - image: cimg/ruby:<%= @ruby_version %>-node
+      - image: circleci/postgres:9.5-alpine
+        environment:
+          POSTGRES_USER: your-app-name
+          POSTGRES_DB: your-app-name_test
+          POSTGRES_PASSWORD: ""
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: your-app-name
+      PGPASSWORD: ""
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: Run test
+          command: bundle exec rails test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

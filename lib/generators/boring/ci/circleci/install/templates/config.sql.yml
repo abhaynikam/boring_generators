@@ -1,0 +1,61 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.1
+  node: circleci/node@2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:<%= @ruby_version %>-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      # Store bundle cache
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+  test:
+    parallelism: 3
+    docker:
+      - image: cimg/ruby:<%= @ruby_version %>-node
+        environment:
+          MYSQL_ROOT_PASSWORD: your-password
+          MYSQL_DATABASE: your-app-database
+          MYSQL_USER: your-app-user
+          MYSQL_PASSWORD: your-app-password
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: Run test
+          command: bundle exec rails test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
