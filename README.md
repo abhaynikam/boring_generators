@@ -8,11 +8,11 @@
   <a href="https://github.com/abhaynikam/boring_generators/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/abhaynikam/boring_generators?style=flat-square"></a>
 </p>
 
-<p align="center">
+<p>
   Have you ever started a new adventure/hobby project of your and instead of spending time in solving the actual problem statement with the website ended up configuring the application and put a lot of effort into it. Yeah, We felt that too. Boring generator tries to resolve the painful same redundant configuration you do in every application by adding generators to easily configure it.
 </p>
 
-<p align="center">
+<p>
   Check out the generator we support right now. We are planning to add support to most of the mostly used and required gems. We are open to any idea of yours, feel free to raise a discussion by opening up an issue or try contributing.
 </p>
 
