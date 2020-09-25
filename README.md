@@ -1,8 +1,21 @@
-# BoringGenerators
+<h3 align="center">
+  Boring Generators
+</h3>
 
-Have you ever started a new adventure/hobby project of your and instead of spending time in solving the actual problem statement with the website ended up configuring the application and put a lot of effort into it. Yeah, We felt that too. Boring generator tries to resolve the painful same redundant configuration you do in every application by adding generators to easily configure it.
+<p align="center">
+  ![Gem](https://img.shields.io/gem/dt/boring_generators?style=flat-square)
+  ![GitHub](https://img.shields.io/github/license/abhaynikam/boring_generators?style=flat-square)
+  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/abhaynikam/boring_generators?style=flat-square)
+</p>
 
-Check out the generator we support right now. We are planning to add support to most of the mostly used and required gems. We are open to any idea of yours, feel free to raise a discussion by opening up an issue or try contributing.
+<p align="center">
+  Have you ever started a new adventure/hobby project of your and instead of spending time in solving the actual problem statement with the website ended up configuring the application and put a lot of effort into it. Yeah, We felt that too. Boring generator tries to resolve the painful same redundant configuration you do in every application by adding generators to easily configure it.
+</p>
+
+<p align="center">
+  Check out the generator we support right now. We are planning to add support to most of the mostly used and required gems. We are open to any idea of yours, feel free to raise a discussion by opening up an issue or try contributing.
+</p>
+
 
 ## Installation
 
