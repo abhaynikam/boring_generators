@@ -3,9 +3,9 @@
 </h3>
 
 <p align="center">
-  ![Gem](https://img.shields.io/gem/dt/boring_generators?style=flat-square)
-  ![GitHub](https://img.shields.io/github/license/abhaynikam/boring_generators?style=flat-square)
-  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/abhaynikam/boring_generators?style=flat-square)
+  <a href="https://rubygems.org/gems/boring_generators"><img alt="Gem" src="https://img.shields.io/gem/dt/boring_generators?style=flat-square"></a>
+  <a href="https://github.com/abhaynikam/boring_generators/blob/master/LICENSE.txt"><img alt="GitHub" src="https://img.shields.io/github/license/abhaynikam/boring_generators?style=flat-square"></a>
+  <a href="https://github.com/abhaynikam/boring_generators/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/abhaynikam/boring_generators?style=flat-square"></a>
 </p>
 
 <p align="center">
