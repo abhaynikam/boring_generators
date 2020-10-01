@@ -2,45 +2,35 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.1.1
-  <% unless @skip_node do %>
-    node: circleci/node@2
-  <% end %>
+  <%- unless @skip_node -%>
+  node: circleci/node@2
+  <%- end -%>
 
 jobs:
-  build:
-    docker:
-      - image: cimg/ruby:<%= @ruby_version %>-node
-    steps:
-      - checkout
-      - ruby/install-deps
-      <% unless @skip_node do %>
-        # Store bundle cache
-        - node/install-packages:
-            pkg-manager: yarn
-            cache-key: "yarn.lock"
-      <% end %>
   test:
-    parallelism: 3
+    parallelism: 1
     docker:
       - image: cimg/ruby:<%= @ruby_version %>-node
-      - image: circleci/postgres:9.5-alpine
+      - image: circleci/postgres:11.2
         environment:
-          POSTGRES_USER: your-app-name
-          POSTGRES_DB: your-app-name_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: postgres
+          POSTGRES_DB: <%= "#{@repository_name}_test" %>
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      PGUSER: your-app-name
-      PGPASSWORD: ""
+      PGUSER: postgres
       RAILS_ENV: test
     steps:
       - checkout
       - ruby/install-deps
+      <%- unless @skip_node -%>
+      # Store bundle cache
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
+      <%- end -%>
+      - run: cp config/database.yml.ci config/database.yml
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -53,9 +43,6 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  test:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - test

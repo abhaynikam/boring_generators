@@ -47,6 +47,7 @@ The boring generator introduces following generators:
 - Install Active Storage for Google Cloud Service: `rails generate boring:active_storage:google:install`
 - Install Active Storage for AWS: `rails generate boring:active_storage:aws:install`
 - Install Active Storage for Azure: `rails generate boring:active_storage:azure:install`
+- Install CircleCI: `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`
 
 ## Development
 
