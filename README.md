@@ -49,6 +49,7 @@ The boring generator introduces following generators:
 - Install Active Storage for Azure: `rails generate boring:active_storage:azure:install`
 - Install CircleCI: `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`
 - Install GitHub Actions: `rails generate boring:ci:github_action:install --repository_name=<name> --ruby_version=<version>`
+- Install Travis CI: `rails generate boring:ci:travisci:install --ruby_version=<version>`
 
 ## Development
 

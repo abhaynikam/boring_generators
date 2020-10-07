@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Adds CircleCI install generator. ([@abhaynikam][])
 * Adds GitHub Actions install generator. ([@abhaynikam][])
+* Adds Travis CI install generator. ([@abhaynikam][])
 
 ## 0.3.0 (September 19th, 2020)
 * Adds Bullet install generator. ([@abhaynikam][])

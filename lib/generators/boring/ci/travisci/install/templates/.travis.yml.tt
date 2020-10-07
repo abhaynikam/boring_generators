@@ -1,0 +1,35 @@
+language: ruby
+
+rvm:
+  - <%= @ruby_version %>
+
+services:
+  - postgresql
+
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
+
+env:
+  global:
+    - RAILS_ENV=test
+    - NODE_ENV=test
+
+before_install:
+  - nvm install --lts
+
+install:
+  - node -v
+  - yarn
+  - bundle
+
+before_script:
+  - bundle install --jobs=3 --retry=3
+  - bundle exec rails db:create
+  - bundle exec rails db:schema:load
+
+script:
+  - bundle exec rails db:schema:load
+  - bundle exec rails test
