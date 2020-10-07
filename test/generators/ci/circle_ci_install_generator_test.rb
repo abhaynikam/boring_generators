@@ -14,7 +14,7 @@ class CircleCiInstallGeneratorTest < Rails::Generators::TestCase
     app_path
   end
 
-  def test_should_install_circle_ci_successfully
+  def test_generator_should_install_circle_ci_successfully
     Dir.chdir(app_path) do
       quietly { run_generator }
 
@@ -31,7 +31,7 @@ class CircleCiInstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  def test_should_skip_adding_node_configuration_params
+  def test_generator_should_skip_adding_node_configuration_params
     Dir.chdir(app_path) do
       quietly { run_generator [destination_root, "--skip-node"] }
 
@@ -41,7 +41,7 @@ class CircleCiInstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  def test_should_use_repository_name_passed_in_params
+  def test_generator_should_use_repository_name_passed_in_params
     Dir.chdir(app_path) do
       quietly { run_generator [destination_root, "--repository_name=boring"] }
 
@@ -55,7 +55,7 @@ class CircleCiInstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  def test_should_use_ruby_version_passed_in_params
+  def test_generator_should_use_ruby_version_passed_in_params
     Dir.chdir(app_path) do
       quietly { run_generator [destination_root, "--ruby_version=2.6.3"] }
 
