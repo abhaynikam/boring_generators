@@ -14,7 +14,6 @@ jobs:
         ports: ["5432:5432"]
 
     steps:
-      - uses: actions/checkout@v2
       - name: Checkout code
         uses: actions/checkout@v2
       - name: <%= "Set up Ruby #{@ruby_version}" %>

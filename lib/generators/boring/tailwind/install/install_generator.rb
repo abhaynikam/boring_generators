@@ -7,9 +7,9 @@ module Boring
       source_root File.expand_path("templates", __dir__)
 
       class_option :skip_tailwind_css_ui,    type: :boolean, aliases: "-sui",
-                                            desc: "Skip adding @tailwindcss/ui package"
+                                             desc: "Skip adding @tailwindcss/ui package"
       class_option :skip_tailwind_init_full, type: :boolean, aliases: "-sif",
-                                            desc: "Skip running tailwindcss init with --full option"
+                                             desc: "Skip running tailwindcss init with --full option"
 
       def add_tailwind_package
         say "Adding tailwind package", :green
