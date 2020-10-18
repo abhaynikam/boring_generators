@@ -4,12 +4,12 @@ jobs:
   test:
     name: Tests
     runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-    - name: Install gems
-      run: bundle install --jobs 4 --retry 3
-    - name: Run tests
-      run: bundle exec rails test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+      - name: Install gems
+        run: bundle install --jobs 4 --retry 3
+      - name: Run tests
+        run: bundle exec rails test
