@@ -6,6 +6,7 @@
   <a href="https://rubygems.org/gems/boring_generators"><img alt="Gem" src="https://img.shields.io/gem/dt/boring_generators?style=flat-square"></a>
   <a href="https://github.com/abhaynikam/boring_generators/blob/master/LICENSE.txt"><img alt="GitHub" src="https://img.shields.io/github/license/abhaynikam/boring_generators?style=flat-square"></a>
   <a href="https://github.com/abhaynikam/boring_generators/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/abhaynikam/boring_generators?style=flat-square"></a>
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/abhaynikam/boring_generators/CI?style=flat-square">
 </p>
 
 <p>
