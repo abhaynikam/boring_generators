@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds favicon build generator. ([@abhaynikam][])
 
 ## 0.4.0 (October 23rd, 2020)
 * Adds CircleCI install generator. ([@abhaynikam][])
