@@ -16,4 +16,4 @@
 <%%= favicon_link_tag "favicons/apple-touch-icon-precomposed.png", rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
 <meta name="msapplication-TileImage" content="<%%= image_path("favicons/mstile-144x144.png") %>" />
 <meta name="msapplication-TileColor" content="<%= @primary_color %>" />
-<meta name="application-name" content=<%= @application_name %>>
+<meta name="application-name" content="<%= @application_name %>">
