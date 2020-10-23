@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.4.0 (October 23rd, 2020)
 * Adds CircleCI install generator. ([@abhaynikam][])
 * Adds GitHub Actions install generator. ([@abhaynikam][])
 * Adds Travis CI install generator. ([@abhaynikam][])
