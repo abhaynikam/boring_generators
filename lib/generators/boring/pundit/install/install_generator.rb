@@ -10,9 +10,8 @@ module Boring
       def add_pundit_gem
         say "Adding Pundit gem", :green
 
-        gem 'pundit'
         Bundler.with_unbundled_env do
-          run "bundle install"
+          run "bundle add pundit"
         end
       end
 
