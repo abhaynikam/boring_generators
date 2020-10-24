@@ -19,7 +19,7 @@ module Boring
         return if options[:skip_generator]
 
         say "Running Pundit Generator", :green
-        run "rails generate pundit:install"
+        run "DISABLE_SPRING=1 rails generate pundit:install"
       end
 
       def inject_pundit_to_controller
