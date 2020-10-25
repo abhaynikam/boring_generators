@@ -41,7 +41,7 @@ module Boring
       def rescue_from_not_authorized
         return if options[:skip_rescue]
 
-        say "Add rescue from Pundit::NotAuthorizedError", :green
+        say "Adding rescue from Pundit::NotAuthorizedError", :green
 
         after = if File.read('app/controllers/application_controller.rb') =~ (/:verify_authorized/)
                   "after_action :verify_authorized\n"
