@@ -7,6 +7,13 @@ module Boring
     class InstallGenerator < Rails::Generators::Base
       desc "Adds pundit to the application"
 
+      class_option :skip_ensuring_policies, type: :boolean, aliases: "-s",
+                   desc: "Skip before_action to ensure user is authorized"
+      class_option :skip_rescue, type: :boolean, aliases: "-sr",
+                   desc: "Skip adding rescue for Pundit::NotAuthorizedError"
+      class_option :skip_generator, type: :boolean, aliases: "-sg",
+                   desc: "Skip running Pundit install generator"
+
       def add_pundit_gem
         say "Adding Pundit gem", :green
 
@@ -51,14 +58,14 @@ module Boring
 
         inject_into_file 'app/controllers/application_controller.rb', after: after do
           <<~RUBY
-            rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+            \trescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-            private
+            \tprivate
 
-            def user_not_authorized
-              flash[:alert] = "You are not authorized to perform this action."
-              redirect_to(request.referrer || root_path)
-            end
+            \tdef user_not_authorized
+            \t  flash[:alert] = "You are not authorized to perform this action."
+            \t  redirect_to(request.referrer || root_path)
+            \tend
           RUBY
         end
       end
