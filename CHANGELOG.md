@@ -2,7 +2,8 @@
 
 ## master (unreleased)
 * Adds favicon build generator. ([@abhaynikam][])
-* Adds Pundit install generator. ([@CiTroNaK])
+* Adds Pundit install generator. ([@CiTroNaK][])
+* Adds GraphQL generator. ([@abhaynikam][])
 
 ## 0.4.0 (October 23rd, 2020)
 * Adds CircleCI install generator. ([@abhaynikam][])

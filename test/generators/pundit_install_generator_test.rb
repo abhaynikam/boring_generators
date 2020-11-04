@@ -16,7 +16,7 @@ class PunditInstallGeneratorTest < Rails::Generators::TestCase
 
   def test_should_install_pundit_successfully
     Dir.chdir(app_path) do
-      quietly { run_generator }
+      run_generator
 
       assert_file "Gemfile" do |content|
         assert_match(/pundit/, content)

@@ -52,6 +52,7 @@ The boring generator introduces following generators:
 - Install Rubocop: `rails generate boring:rubocop:install --ruby_version=<version>`
 - Build Favicon: `rails generate boring:favicon:build --application_name=<application_name> --favico_letter=<favico_letter> --primary_color=<color>`
 - Install Pundit: `rails generate boring:pundit:install`
+- Install GraphQL: `rails generate boring:graphql:install`
 
 ## Development
 
