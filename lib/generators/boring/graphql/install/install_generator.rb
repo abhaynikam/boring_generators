@@ -13,9 +13,13 @@ module Boring
 
       def add_graphql_gem
         say "Adding graphql gem", :green
-        Bundler.with_unbundled_env do
-          run "bundle add graphql"
-        end
+        graphql_gem = <<~RUBY
+          \n
+          # for building APIs
+          gem 'graphql', '~> 1.11'
+        RUBY
+        append_to_file "Gemfile", graphql_gem
+        run "bundle install"
       end
 
       def run_graphql_generator
