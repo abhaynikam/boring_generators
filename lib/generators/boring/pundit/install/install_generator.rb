@@ -16,10 +16,13 @@ module Boring
 
       def add_pundit_gem
         say "Adding Pundit gem", :green
-
-        Bundler.with_unbundled_env do
-          run "bundle add pundit"
-        end
+        pundit_gem = <<~RUBY
+          \n
+          # for authorization
+          gem 'pundit', '~> 2.1'
+        RUBY
+        append_to_file "Gemfile", pundit_gem
+        run "bundle install"
       end
 
       def run_pundit_generator
