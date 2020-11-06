@@ -16,7 +16,6 @@ module Boring
 
       def add_pundit_gem
         say "Adding Pundit gem", :green
-
         pundit_gem = <<~RUBY
           \n
           # for authorization
