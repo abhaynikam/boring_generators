@@ -33,7 +33,7 @@ class AzureActiveStorageInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       quietly { run_generator [destination_root, "--skip_active_storage"] }
 
-      assert_migration "db/migrate/create_active_storage_tables.active_storage.rb"
+      assert_no_migration "db/migrate/create_active_storage_tables.active_storage.rb"
     end
   end
 end
