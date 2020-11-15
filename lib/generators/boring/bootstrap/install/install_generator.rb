@@ -12,7 +12,7 @@ module Boring
       end
 
       def add_jquery_plugin_provider_to_webpack_environment
-        say "Initailizing tailwind configuration", :green
+        say "Adding jQuery and popper JS plugin in the webpack", :green
         if File.exist?("config/webpack/environment.js")
           insert_into_file "config/webpack/environment.js", <<~RUBY, after: /@rails\/webpacker.*\n/
             const webpack = require("webpack")
@@ -37,7 +37,7 @@ module Boring
             '@import "~bootstrap/scss/bootstrap";'
           end
         else
-          say "Copying application.scss with tailwind imports", :green
+          say "Copying application.scss with bootstrap imports", :green
           template("application.scss", "app/javascript/stylesheets/application.scss")
         end
       end
