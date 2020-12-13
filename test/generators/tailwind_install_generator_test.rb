@@ -26,10 +26,11 @@ class TailwindInstallGeneratorTest < Rails::Generators::TestCase
       assert_file "tailwind.config.js" do |content|
         assert_match(/colors:/, content)
         assert_match(/screens:/, content)
-        assert_match(/important:/, content)
-        assert_match(/prefix:/, content)
-        assert_match(/target:/, content)
-        assert_match(/purge:/, content)
+        assert_match(/spacing:/, content)
+        assert_match(/animation:/, content)
+        assert_match(/backgroundColor:/, content)
+        assert_match(/backgroundImage:/, content)
+        assert_match(/fontSize:/, content)
       end
 
       assert_file "postcss.config.js" do |content|
@@ -72,7 +73,7 @@ class TailwindInstallGeneratorTest < Rails::Generators::TestCase
       end
 
       assert_file "tailwind.config.js" do |content|
-        expected = "module.exports = {\n  future: {\n    // removeDeprecatedGapUtilities: true,\n    // purgeLayersByDefault: true,\n  },\n  purge: [],\n  theme: {\n    extend: {},\n  },\n  variants: {},\n  plugins: [],\n}\n"
+        expected = "module.exports = {\n  purge: [],\n  darkMode: false, // or 'media' or 'class'\n  theme: {\n    extend: {},\n  },\n  variants: {\n    extend: {},\n  },\n  plugins: [],\n}\n"
         assert_match(expected, content)
       end
     end
