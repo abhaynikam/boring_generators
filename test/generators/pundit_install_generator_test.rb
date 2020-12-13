@@ -27,8 +27,6 @@ class PunditInstallGeneratorTest < Rails::Generators::TestCase
         assert_match(/:verify_authorized/, content)
         assert_match(/rescue_from/, content)
       end
-
-      assert_file "app/policies/application_policy.rb"
     end
   end
 
