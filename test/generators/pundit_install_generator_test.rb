@@ -16,18 +16,16 @@ class PunditInstallGeneratorTest < Rails::Generators::TestCase
 
   def test_should_install_pundit_successfully
     Dir.chdir(app_path) do
-      with_stubbed_bundle_add do
-        quietly { run_generator }
+      quietly { run_generator }
 
-        assert_file "Gemfile" do |content|
-          assert_match(/pundit/, content)
-        end
+      assert_file "Gemfile" do |content|
+        assert_match(/pundit/, content)
+      end
 
-        assert_file "app/controllers/application_controller.rb" do |content|
-          assert_match(/include Pundit/, content)
-          assert_match(/:verify_authorized/, content)
-          assert_match(/rescue_from/, content)
-        end
+      assert_file "app/controllers/application_controller.rb" do |content|
+        assert_match(/include Pundit/, content)
+        assert_match(/:verify_authorized/, content)
+        assert_match(/rescue_from/, content)
       end
     end
   end
@@ -60,11 +58,4 @@ class PunditInstallGeneratorTest < Rails::Generators::TestCase
       assert_no_file "app/policies/application_policy.rb"
     end
   end
-
-  private
-    def with_stubbed_bundle_add
-      generator.stub :add_pundit_gem, 'bundle add pundit --skip-install' do
-        yield
-      end
-    end
 end
