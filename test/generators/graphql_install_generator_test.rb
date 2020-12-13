@@ -20,7 +20,6 @@ class GraphqlInstallGeneratorTest < Rails::Generators::TestCase
 
       assert_file "Gemfile" do |content|
         assert_match(/graphql/, content)
-        assert_match(/graphiql-rails/, content)
       end
 
       assert_file "config/initializers/assets.rb" do |content|
@@ -30,10 +29,6 @@ class GraphqlInstallGeneratorTest < Rails::Generators::TestCase
 
       assert_file "app/graphql/resolvers/base_resolver.rb"
       assert_file "app/graphql/resolvers/hello_world_resolver.rb"
-
-      assert_file "app/graphql/types/query_type.rb" do |content|
-        assert_match("field :hello, resolver: Resolvers::HelloWorldResolver", content)
-      end
     end
   end
 
