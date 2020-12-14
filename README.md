@@ -53,6 +53,7 @@ The boring generator introduces following generators:
 - Build Favicon: `rails generate boring:favicon:build --application_name=<application_name> --favico_letter=<favico_letter> --primary_color=<color>`
 - Install Pundit: `rails generate boring:pundit:install`
 - Install GraphQL: `rails generate boring:graphql:install`
+- Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 
 ## Development
 
