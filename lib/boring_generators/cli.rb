@@ -1,13 +1,26 @@
 # frozen_string_literal: true
-
-require "thor"
-require File.expand_path('lib/generators/boring/tailwind/install/install_generator', Dir.pwd)
+require "rails/generators"
+require_relative "../boring_generators"
 
 module BoringGenerators
   class CLI < Thor
-    desc "tailwind:install", "Adds Tailwind CSS to the application"
-    def tailwind
-      Boring::Tailwind::InstallGenerator.invoke
+    map "g" => :generate
+    map %w(--version -v) => :__print_version
+
+    desc "generate GENERATOR [options]", "Add gem to the application"
+    def generate(generator, *options)
+      Rails::Generators.invoke(generator, options)
+    end
+
+    desc "--version, -v", "Print gem version"
+    def __print_version
+      puts "Boring generators #{BoringGenerators::VERSION}"
+    end
+
+    class << self
+      def exit_on_failure?
+        true
+      end
     end
   end
 end

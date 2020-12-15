@@ -56,6 +56,18 @@ The boring generator introduces following generators:
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 - Install Devise: `rails generate boring:devise:install`
 
+**If you have Boring generators installed on your system, you can use it this way:**
+
+    $ boring generate boring:simple_form:install --css_framework=<css_framework>
+
+You can also use the alias `boring g`
+
+    $ boring g boring:pry:install
+
+To see available commands:
+
+    $ boring help
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
