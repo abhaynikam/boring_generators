@@ -14,7 +14,7 @@ module Boring
         class_option :ruby_version,     type: :string, aliases: "-v",
                                                        desc: "Tell us the ruby version which you use for the application. Default to Ruby #{DEFAULT_RUBY_VERSION}"
         class_option :node_version,     type: :string, aliases: "-v",
-                                                       desc: "Tell us the node version which you use for the application. Default to Ruby #{DEFAULT_NODE_VERSION}"
+                                                       desc: "Tell us the node version which you use for the application. Default to Node #{DEFAULT_NODE_VERSION}"
         class_option :repository_name,  type: :string, aliases: "-rn",
                                                        desc: "Tell us the repository name to be used as database name on GitHub Actions. Defaults to #{DEFAULT_REPOSITORY_NAME}"
 
