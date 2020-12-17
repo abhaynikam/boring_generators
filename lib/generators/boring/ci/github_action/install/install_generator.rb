@@ -16,7 +16,7 @@ module Boring
         class_option :node_version,     type: :string, aliases: "-v",
                                                        desc: "Tell us the node version which you use for the application. Default to Ruby #{DEFAULT_NODE_VERSION}"
         class_option :repository_name,  type: :string, aliases: "-rn",
-                                                       desc: "Tell us the repository name to be used as database name on circleci. Defaults to #{DEFAULT_REPOSITORY_NAME}"
+                                                       desc: "Tell us the repository name to be used as database name on GitHub Actions. Defaults to #{DEFAULT_REPOSITORY_NAME}"
 
         def add_github_actions_configuration
           @ruby_version = options[:ruby_version] ? options[:ruby_version] : DEFAULT_RUBY_VERSION
