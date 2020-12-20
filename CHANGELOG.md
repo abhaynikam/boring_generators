@@ -5,6 +5,7 @@
 * Adds Pundit install generator. ([@CiTroNaK][])
 * Adds GraphQL generator. ([@abhaynikam][])
 * Adds SimpleForm generator. ([@abhaynikam][])
+* Adds Devise generator. ([@abhaynikam][])
 
 ## 0.4.0 (October 23rd, 2020)
 * Adds CircleCI install generator. ([@abhaynikam][])
