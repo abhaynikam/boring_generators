@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.5.0 (December 20th, 2020)
 * Adds favicon build generator. ([@abhaynikam][])
 * Adds Pundit install generator. ([@CiTroNaK][])
 * Adds GraphQL generator. ([@abhaynikam][])
