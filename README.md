@@ -60,6 +60,7 @@ The boring generator introduces following generators:
 - Install GraphQL: `rails generate boring:graphql:install`
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 - Install Devise: `rails generate boring:devise:install`
+- Install Devise Facebook Omniauth: `rails generate boring:oauth:facebook:install`
 
 ## Development
 

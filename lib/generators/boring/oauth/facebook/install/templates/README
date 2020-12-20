@@ -1,0 +1,24 @@
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have overridden or uncommented the routes for generated omniauth callback controllers in your routes.rb.
+     For example:
+
+     Rails.application.routes.draw do
+       devise_for :users, controllers: {
+         omniauth_callbacks: "users/omniauth_callbacks"
+       }
+     end
+
+  2. Update the devise facebook omniauth APP_ID and APP_SECRET in "config/initializers/devise.rb"
+     after registering the Rails application on: https://developers.facebook.com/apps/
+     For example:
+
+     config.omniauth :facebook, "APP_ID", "APP_SECRET"
+  3. Ensure you have added the facebook omniauth route in the devise session view:
+     For example:
+
+     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+===============================================================================
