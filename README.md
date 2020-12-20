@@ -54,6 +54,7 @@ The boring generator introduces following generators:
 - Install Pundit: `rails generate boring:pundit:install`
 - Install GraphQL: `rails generate boring:graphql:install`
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
+- Install Devise: `rails generate boring:devise:install`
 
 ## Development
 
