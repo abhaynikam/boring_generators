@@ -31,7 +31,7 @@ module Boring
 
           if @ruby_version == DEFAULT_RUBY_VERSION && !ruby_version_file_exists?
             say <<~WARNING, :red
-              WARNING: The action was configured to use the ruby version sepecified in the .ruby-version
+              WARNING: The action was configured to use the ruby version specified in the .ruby-version
               file, but no such file was present. Either create an appropriate .ruby-version file, or
               update .github/workflows/ci.yml to use an explicit ruby version.
             WARNING
