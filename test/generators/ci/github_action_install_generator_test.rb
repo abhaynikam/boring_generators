@@ -20,7 +20,7 @@ class GithubActionInstallGeneratorTest < Rails::Generators::TestCase
 
       assert_file ".github/workflows/ci.yml" do |content|
         assert_match("boring_generators_test", content)
-        assert_match("2.7.1", content)
+        assert_match(".ruby-version", content)
         assert_match("10.13.0", content)
       end
     end
@@ -55,6 +55,32 @@ class GithubActionInstallGeneratorTest < Rails::Generators::TestCase
         assert_match("boring_generators_test", content)
         assert_match("10.13.2", content)
       end
+    end
+  end
+
+  def test_generator_should_warn_if_ruby_version_file_is_specified_but_missing
+    Dir.chdir(app_path) do
+      File.delete('.ruby-version')
+      output = run_generator [destination_root, "--ruby_version=.ruby-version"]
+      expected = "WARNING: The action was configured to use the ruby version sepecified in the .ruby-version"
+      assert_match  expected, output
+    end
+  end
+
+  def test_generator_should_not_warn_if_ruby_version_file_is_specified_and_present
+    Dir.chdir(app_path) do
+      output = run_generator [destination_root, "--ruby_version=.ruby-version"]
+      expected = "WARNING: The action was configured to use the ruby version sepecified in the .ruby-version"
+      refute_match  expected, output
+    end
+  end
+
+  def test_generator_should_not_warn_if_a_specifi_ruby_version_is_specified
+    Dir.chdir(app_path) do
+      File.delete('.ruby-version')
+      output = run_generator [destination_root, "--ruby_version=2.7.1"]
+      expected = "WARNING: The action was configured to use the ruby version sepecified in the .ruby-version"
+      refute_match  expected, output
     end
   end
 end
