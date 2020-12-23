@@ -39,3 +39,5 @@
 
 [@abhaynikam]: https://github.com/abhaynikam
 [@CiTroNaK]: https://github.com/CiTroNaK
+[@jamesglover]: https://github.com/JamesGlover
+[@luathn]: https://github.com/luathn
