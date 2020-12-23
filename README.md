@@ -32,6 +32,11 @@ Or install it yourself as:
 
     $ gem install boring_generators
 
+And then you can use it this way:
+
+    $ boring generate boring:simple_form:install --css_framework=<css_framework>
+    $ boring g boring:pry:install
+
 ## Usage
 
 The boring generator introduces following generators:

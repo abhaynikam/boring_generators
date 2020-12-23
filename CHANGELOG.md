@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Updates default ruby version of GitHub Actions install generator. ([@jamesglover][])
 * Simplify generated GitHub Actions install ([@jamesglover][])
+* Build boring CLI ([@luathn][])
 
 ## 0.5.0 (December 20th, 2020)
 * Adds favicon build generator. ([@abhaynikam][])
