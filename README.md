@@ -32,6 +32,11 @@ Or install it yourself as:
 
     $ gem install boring_generators
 
+And then you can use it this way:
+
+    $ boring generate boring:simple_form:install --css_framework=<css_framework>
+    $ boring g boring:pry:install
+
 ## Usage
 
 The boring generator introduces following generators:
@@ -55,18 +60,6 @@ The boring generator introduces following generators:
 - Install GraphQL: `rails generate boring:graphql:install`
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 - Install Devise: `rails generate boring:devise:install`
-
-**If you have Boring generators installed on your system, you can use it this way:**
-
-    $ boring generate boring:simple_form:install --css_framework=<css_framework>
-
-You can also use the alias `boring g`
-
-    $ boring g boring:pry:install
-
-To see available commands:
-
-    $ boring help
 
 ## Development
 
