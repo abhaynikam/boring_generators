@@ -60,6 +60,7 @@ The boring generator introduces following generators:
 - Install GraphQL: `rails generate boring:graphql:install`
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 - Install Devise: `rails generate boring:devise:install`
+- Install Rspec (`--version` is gem version and it's optional): `rails generate boring:rspec:install --version=<version>`
 
 ## Development
 
