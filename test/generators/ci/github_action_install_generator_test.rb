@@ -62,7 +62,7 @@ class GithubActionInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       File.delete('.ruby-version')
       output = run_generator [destination_root, "--ruby_version=.ruby-version"]
-      expected = "WARNING: The action was configured to use the ruby version sepecified in the .ruby-version"
+      expected = "WARNING: The action was configured to use the ruby version specified in the .ruby-version"
       assert_match  expected, output
     end
   end
@@ -70,7 +70,7 @@ class GithubActionInstallGeneratorTest < Rails::Generators::TestCase
   def test_generator_should_not_warn_if_ruby_version_file_is_specified_and_present
     Dir.chdir(app_path) do
       output = run_generator [destination_root, "--ruby_version=.ruby-version"]
-      expected = "WARNING: The action was configured to use the ruby version sepecified in the .ruby-version"
+      expected = "WARNING: The action was configured to use the ruby version specified in the .ruby-version"
       refute_match  expected, output
     end
   end
@@ -79,7 +79,7 @@ class GithubActionInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       File.delete('.ruby-version')
       output = run_generator [destination_root, "--ruby_version=2.7.1"]
-      expected = "WARNING: The action was configured to use the ruby version sepecified in the .ruby-version"
+      expected = "WARNING: The action was configured to use the ruby version specified in the .ruby-version"
       refute_match  expected, output
     end
   end
