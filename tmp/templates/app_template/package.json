@@ -2,7 +2,7 @@
   "name": "dummy",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "https://github.com/rails/webpacker.git",
+    "@rails/webpacker": "^5.2.1",
     "turbolinks": "^5.2.0"
   }
 }
