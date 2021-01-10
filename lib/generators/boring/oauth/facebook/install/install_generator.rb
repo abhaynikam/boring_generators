@@ -6,7 +6,7 @@ module Boring
   module Oauth
     module Facebook
       class InstallGenerator < Rails::Generators::Base
-        MissingDeviseConfigurationError = Class.new(Thor::Error)
+        class MissingDeviseConfigurationError < StandardError; end
 
         desc "Adds facebook OmniAuth to the application"
         source_root File.expand_path("templates", __dir__)
@@ -19,12 +19,16 @@ module Boring
             gem 'omniauth-facebook', '~> 8.0'
           RUBY
           append_to_file "Gemfile", facebook_omniauth_gem
-          run "bundle install"
+          Bundler.with_unbundled_env do
+            run "bundle install"
+          end
         end
 
         def add_provider_and_uuid_user_details
           say "Adding migration to add provider and uuid columns to users", :green
-          run "DISABLE_SPRING=1 rails generate migration AddOmniauthToUsers provider:string uid:string"
+          Bundler.with_unbundled_env do
+            run "DISABLE_SPRING=1 bundle exec rails generate migration AddOmniauthToUsers provider:string uid:string"
+          end
         end
 
         def configure_devise_omniauth_facebook
