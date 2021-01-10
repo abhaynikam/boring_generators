@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'bundler'
-
 module Boring
   module Pundit
     class InstallGenerator < Rails::Generators::Base
@@ -22,7 +20,9 @@ module Boring
           gem 'pundit', '~> 2.1'
         RUBY
         append_to_file "Gemfile", pundit_gem
-        run "bundle install"
+        Bundler.with_unbundled_env do
+          run "bundle install"
+        end
       end
 
       def run_pundit_generator

@@ -22,12 +22,16 @@ module Boring
           gem 'devise', '~> 4.7'
         RUBY
         append_to_file "Gemfile", devise_gem
-        run "bundle install"
+        Bundler.with_unbundled_env do
+          run "bundle install"
+        end
       end
 
       def generating_devise_defaults
         say "Generating devise defaults", :green
-        run "DISABLE_SPRING=1 rails generate devise:install"
+        Bundler.with_unbundled_env do
+          run "DISABLE_SPRING=1 bundle exec rails generate devise:install"
+        end
       end
 
       def add_devise_action_mailer_development_config
@@ -44,7 +48,9 @@ module Boring
         say "Adding devise user model", :green
         model_name = options[:model_name] || DEFAULT_DEVISE_MODEL_NAME
 
-        run "DISABLE_SPRING=1 rails generate devise #{model_name}"
+        Bundler.with_unbundled_env do
+          run "DISABLE_SPRING=1 bundle exec rails generate devise #{model_name}"
+        end
       end
 
       def add_devise_authentication_filter_to_application_controller
@@ -60,7 +66,9 @@ module Boring
         say "Adding devise views", :green
         model_name = options[:model_name] || DEFAULT_DEVISE_MODEL_NAME
 
-        run "rails generate devise:views #{model_name.pluralize}"
+        Bundler.with_unbundled_env do
+          run "DISABLE_SPRING=1 bundle exec rails generate devise:views #{model_name.pluralize}"
+        end
       end
     end
   end
