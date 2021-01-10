@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.6.0 (January 10th, 2021)
 * Updates default ruby version of GitHub Actions install generator. ([@jamesglover][])
 * Simplify generated GitHub Actions install ([@jamesglover][])
 * Adds boring generator CLI ([@luathn][])
