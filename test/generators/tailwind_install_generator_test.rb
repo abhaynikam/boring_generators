@@ -19,7 +19,6 @@ class TailwindInstallGeneratorTest < Rails::Generators::TestCase
       quietly { run_generator }
 
       assert_file "package.json" do |content|
-        assert_match(/@tailwindcss\/ui/, content)
         assert_match(/tailwindcss/, content)
       end
 
@@ -49,17 +48,6 @@ class TailwindInstallGeneratorTest < Rails::Generators::TestCase
 
       assert_file "app/views/layouts/application.html.erb" do |content|
         assert_match(/stylesheet_pack_tag \'application\'/, content)
-      end
-    end
-  end
-
-  def test_should_skip_adding_tailwindcss_ui_library_when_used_option_skip_tailwind_css_ui
-    Dir.chdir(app_path) do
-      quietly { run_generator [destination_root, "--skip_tailwind_css_ui"] }
-
-      assert_file "package.json" do |content|
-        assert_no_match(/@tailwindcss\/ui/, content)
-        assert_match(/tailwindcss/, content)
       end
     end
   end

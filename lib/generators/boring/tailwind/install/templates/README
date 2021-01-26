@@ -1,0 +1,13 @@
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  Current webpacker version relies on the older version of PostCSS.
+  Tailwind 2.0 doesn't support the older version of PostCSS. Please
+  update package.json to update webpacker version.
+
+    ```
+      "@rails/webpacker": "rails/webpacker#b6c2180",
+    ```
+
+===============================================================================

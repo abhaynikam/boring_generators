@@ -6,18 +6,12 @@ module Boring
       desc "Adds Tailwind CSS to the application"
       source_root File.expand_path("templates", __dir__)
 
-      class_option :skip_tailwind_css_ui,    type: :boolean, aliases: "-sui",
-                                             desc: "Skip adding @tailwindcss/ui package"
       class_option :skip_tailwind_init_full, type: :boolean, aliases: "-sif",
                                              desc: "Skip running tailwindcss init with --full option"
 
       def add_tailwind_package
         say "Adding tailwind package", :green
-        if options[:skip_tailwind_css_ui]
-          run "yarn add tailwindcss"
-        else
-          run "yarn add tailwindcss @tailwindcss/ui"
-        end
+        run "yarn add tailwindcss@latest postcss@latest autoprefixer@latest"
       end
 
       def create_tailwind_config
@@ -54,9 +48,12 @@ module Boring
 
       def insert_stylesheet_in_the_application
         if File.exist?("app/javascript/packs/application.js")
-          append_to_file "app/javascript/packs/application.js" do
-            'import "stylesheets/application"'
-          end
+          stylesheet_tailwind_imports = <<~RUBY
+            \n
+            import "stylesheets/application"
+          RUBY
+
+          append_to_file "app/javascript/packs/application.js", stylesheet_tailwind_imports
         else
           say <<~WARNING, :red
             ERROR: Looks like the webpacker installation is incomplete. Could not find application.js in app/javascript/packs.
@@ -68,6 +65,10 @@ module Boring
         insert_into_file "app/views/layouts/application.html.erb", <<~RUBY, after: /stylesheet_link_tag.*\n/
           \t\t<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
         RUBY
+      end
+
+      def show_readme
+        readme "README"
       end
     end
   end
