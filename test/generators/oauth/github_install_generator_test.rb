@@ -2,10 +2,10 @@
 
 require "test_helper"
 require "generators/boring/devise/install/install_generator"
-require "generators/boring/oauth/facebook/install/install_generator"
+require "generators/boring/oauth/github/install/install_generator"
 
-class OauthFacebookInstallGeneratorTest < Rails::Generators::TestCase
-  tests Boring::Oauth::Facebook::InstallGenerator
+class OauthGithubInstallGeneratorTest < Rails::Generators::TestCase
+  tests Boring::Oauth::Github::InstallGenerator
   setup :build_app
   teardown :teardown_app
 
@@ -16,21 +16,21 @@ class OauthFacebookInstallGeneratorTest < Rails::Generators::TestCase
     app_path
   end
 
-  def test_should_install_facebook_oauth
+  def test_should_install_github_oauth
     Dir.chdir(app_path) do
       quietly { Rails::Generators.invoke("boring:devise:install") }
       quietly { run_generator }
 
-      assert_gem "omniauth-facebook"
+      assert_gem "omniauth-github"
       assert_migration "db/migrate/add_omniauth_to_users.rb"
       assert_file "config/initializers/devise.rb" do |content|
-        assert_match('config.omniauth :facebook', content)
+        assert_match('config.omniauth :github', content)
       end
 
       assert_file "app/controllers/users/omniauth_callbacks_controller.rb"
 
       assert_file "app/models/user.rb" do |content|
-        assert_match('devise :omniauthable, omniauth_providers: %i[facebook]', content)
+        assert_match('devise :omniauthable, omniauth_providers: %i[github]', content)
         assert_match('def self.from_omniauth(auth)', content)
       end
     end

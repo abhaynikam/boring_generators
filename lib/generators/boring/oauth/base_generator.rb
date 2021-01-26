@@ -12,6 +12,20 @@ module Boring
         end
       end
 
+      def configure_devise_omniauth
+        say "Adding omniauth devise configuration", :green
+        if File.exist?("config/initializers/devise.rb")
+          insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /Devise.setup do \|config\|/
+            \n
+            \tconfig.omniauth :#{@oauth_name}, "APP_ID", "APP_SECRET"
+          RUBY
+        else
+          raise MissingDeviseConfigurationError, <<~ERROR
+            Looks like the devise installation is incomplete. Could not find devise.rb in config/initializers.
+          ERROR
+        end
+      end
+
       def add_omniauth_callback_routes
         devise_route = '# devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }'.dup
         route devise_route
@@ -23,22 +37,21 @@ module Boring
       end
 
       def configure_and_add_devise_setting_in_user_model
-        say "Configuring facebook omniauth for user model", :green
+        say "Configuring #{@oauth_name.to_s} omniauth for user model", :green
         insert_into_file "app/models/user.rb", <<~RUBY, after: /class User < ApplicationRecord/
+          \n\tdevise :omniauthable, omniauth_providers: %i[#{@oauth_name}]
 
-            \tdevise :omniauthable, omniauth_providers: %i[facebook]
-
-            \tdef self.from_omniauth(auth)
-              \twhere(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-                \tuser.email = auth.info.email
-                \tuser.password = Devise.friendly_token[0, 20]
-                \tuser.name = auth.info.name   # assuming the user model has a name
-                \t# user.image = auth.info.image # assuming the user model has an image
-                \t# If you are using confirmable and the provider(s) you use validate emails,
-                \t# uncomment the line below to skip the confirmation emails.
-                \t# user.skip_confirmation!
-              \tend
+          \tdef self.from_omniauth(auth)
+            \twhere(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+              \tuser.email = auth.info.email
+              \tuser.password = Devise.friendly_token[0, 20]
+              \tuser.name = auth.info.name   # assuming the user model has a name
+              \t# user.image = auth.info.image # assuming the user model has an image
+              \t# If you are using confirmable and the provider(s) you use validate emails,
+              \t# uncomment the line below to skip the confirmation emails.
+              \t# user.skip_confirmation!
             \tend
+          \tend
         RUBY
       end
 

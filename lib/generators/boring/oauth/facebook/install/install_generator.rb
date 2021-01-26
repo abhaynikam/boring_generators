@@ -27,23 +27,12 @@ module Boring
           end
         end
 
-        def configure_devise_omniauth_facebook
-          say "Adding omniauth devise configuration", :green
-          if File.exist?("config/initializers/devise.rb")
-            insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /Devise.setup do \|config\|/
-              \n
-              \tconfig.omniauth :facebook, "APP_ID", "APP_SECRET"
-            RUBY
-          else
-            raise MissingDeviseConfigurationError, <<~ERROR
-              Looks like the devise installation is incomplete. Could not find devise.rb in config/initializers.
-            ERROR
-          end
-        end
-
         def invoke_common_generator_methods
+          @oauth_name = :facebook
           add_provider_and_uuid_user_details
+          configure_devise_omniauth
           add_omniauth_callback_routes
+          add_omniauth_callback_controller
           configure_and_add_devise_setting_in_user_model
           show_readme
         end
