@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Upgrade the Tailwind CSS generator to support Tailwind V2.0. ([@abhaynikam][])
 
 ## 0.6.0 (January 10th, 2021)
 * Updates default ruby version of GitHub Actions install generator. ([@jamesglover][])
