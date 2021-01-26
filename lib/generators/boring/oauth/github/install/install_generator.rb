@@ -5,34 +5,34 @@ require 'generators/boring/oauth/base_generator'
 
 module Boring
   module Oauth
-    module Facebook
+    module Github
       class InstallGenerator < Rails::Generators::Base
         include Boring::Oauth::BaseGenerator
 
         class MissingDeviseConfigurationError < StandardError; end
 
-        desc "Adds facebook OmniAuth to the application"
+        desc "Adds GitHub OmniAuth to the application"
         source_root File.expand_path("templates", __dir__)
 
-        def add_facebook_omniauth_gem
-          say "Adding Facebook OmniAuth gem", :green
-          facebook_omniauth_gem = <<~RUBY
+        def add_github_omniauth_gem
+          say "Adding GitHub OmniAuth gem", :green
+          github_omniauth_gem = <<~RUBY
             \n
-            # for omniauth facebook
-            gem 'omniauth-facebook', '~> 8.0'
+            # for omniauth github
+            gem 'omniauth-github', '~> 2.0'
           RUBY
-          append_to_file "Gemfile", facebook_omniauth_gem
+          append_to_file "Gemfile", github_omniauth_gem
           Bundler.with_unbundled_env do
             run "bundle install"
           end
         end
 
-        def configure_devise_omniauth_facebook
+        def configure_devise_omniauth_github
           say "Adding omniauth devise configuration", :green
           if File.exist?("config/initializers/devise.rb")
             insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /Devise.setup do \|config\|/
               \n
-              \tconfig.omniauth :facebook, "APP_ID", "APP_SECRET"
+              \tconfig.omniauth :github, "APP_ID", "APP_SECRET"
             RUBY
           else
             raise MissingDeviseConfigurationError, <<~ERROR
