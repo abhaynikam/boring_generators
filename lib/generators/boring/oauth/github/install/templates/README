@@ -11,10 +11,10 @@ Some setup you must do manually if you haven't yet:
        }
      end
 
-  2. Update the devise facebook omniauth APP_ID and APP_SECRET in "config/initializers/devise.rb"
-     after registering the Rails application on: https://developers.facebook.com/apps/
+  2. Update the devise github omniauth APP_ID and APP_SECRET in "config/initializers/devise.rb"
+     after registering the Rails application on: https://github.com/settings/applications/new
      For example:
 
-     config.omniauth :facebook, "APP_ID", "APP_SECRET"
+     config.omniauth :github, "APP_ID", "APP_SECRET"
 
 ===============================================================================
