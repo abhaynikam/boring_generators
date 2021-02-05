@@ -2,7 +2,7 @@
 
 require "test_helper"
 require "generators/boring/devise/install/install_generator"
-require "generators/boring/oauth/github/install/install_generator"
+require "generators/boring/oauth/google/install/install_generator"
 
 class OauthGoogleInstallGeneratorTest < Rails::Generators::TestCase
   tests Boring::Oauth::Google::InstallGenerator
