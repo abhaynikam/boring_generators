@@ -1,0 +1,20 @@
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have overridden or uncommented the routes for generated omniauth callback controllers in your routes.rb.
+     For example:
+
+     Rails.application.routes.draw do
+       devise_for :users, controllers: {
+         omniauth_callbacks: "users/omniauth_callbacks"
+       }
+     end
+
+  2. Update the devise google omniauth APP_ID and APP_SECRET in "config/initializers/devise.rb"
+     after registering the Rails application on: https://code.google.com/apis/console/
+     For example:
+
+     config.omniauth :google_auth, "APP_ID", "APP_SECRET"
+
+===============================================================================
