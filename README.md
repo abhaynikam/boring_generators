@@ -62,6 +62,7 @@ The boring generator introduces following generators:
 - Install Devise: `rails generate boring:devise:install`
 - Install Devise Facebook Omniauth: `rails generate boring:oauth:facebook:install`
 - Install Devise GitHub Omniauth: `rails generate boring:oauth:github:install`
+- Install Devise Google Omniauth: `rails generate boring:oauth:google:install`
 
 ## Development
 
