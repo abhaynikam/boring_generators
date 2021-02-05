@@ -24,13 +24,13 @@ class OauthGoogleInstallGeneratorTest < Rails::Generators::TestCase
       assert_gem "omniauth-google-oauth2"
       assert_migration "db/migrate/add_omniauth_to_users.rb"
       assert_file "config/initializers/devise.rb" do |content|
-        assert_match('config.omniauth :google_auth', content)
+        assert_match('config.omniauth :google_oauth2', content)
       end
 
       assert_file "app/controllers/users/omniauth_callbacks_controller.rb"
 
       assert_file "app/models/user.rb" do |content|
-        assert_match('devise :omniauthable, omniauth_providers: %i[google_auth]', content)
+        assert_match('devise :omniauthable, omniauth_providers: %i[google_oauth2]', content)
         assert_match('def self.from_omniauth(auth)', content)
       end
     end
