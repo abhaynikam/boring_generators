@@ -48,7 +48,7 @@ class FaviconBuildGeneratorTest < Rails::Generators::TestCase
       quietly { run_generator [destination_root, "--application_name=boring_generators"] }
 
       assert_file "app/views/layouts/shared/_favicon.html.erb" do |content|
-        assert_match /<meta.*content=.*boring_generators/, content
+        assert_match(/<meta.*content=.*boring_generators/, content)
       end
     end
   end
@@ -58,7 +58,7 @@ class FaviconBuildGeneratorTest < Rails::Generators::TestCase
       quietly { run_generator [destination_root, "--primary_color='#000000'"] }
 
       assert_file "app/views/layouts/shared/_favicon.html.erb" do |content|
-        assert_match /<meta.*content=.*#000000/, content
+        assert_match(/<meta.*content=.*#000000/, content)
       end
     end
   end
