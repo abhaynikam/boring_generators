@@ -2,6 +2,7 @@
 
 ## master (unreleased)
 * Adds Devise Google Omniauth generator. ([@abhaynikam][])
+* Adds Devise Twitter Omniauth generator. ([@abhaynikam][])
 * Adds Twilio generator. ([@abhaynikam][])
 
 ## 0.7.0 (January 30th, 2021)
