@@ -2,6 +2,7 @@
 
 ## master (unreleased)
 * Adds Devise Google Omniauth generator. ([@abhaynikam][])
+* Adds Twilio generator. ([@abhaynikam][])
 
 ## 0.7.0 (January 30th, 2021)
 * Upgrade the Tailwind CSS generator to support Tailwind V2.0. ([@abhaynikam][])
