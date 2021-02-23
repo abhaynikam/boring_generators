@@ -12,6 +12,11 @@ jobs:
         with:
           ruby-version: 2.7.0
           bundler-cache: true
+      - name: Install Imagemagick
+        run: |
+          wget https://raw.githubusercontent.com/discourse/discourse_docker/master/image/base/install-imagemagick
+          chmod +x install-imagemagick
+          sudo ./install-imagemagick
       - name: Install gems
         run: bundle install --jobs 4 --retry 3
       - name: Run tests
