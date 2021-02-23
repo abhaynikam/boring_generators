@@ -1,0 +1,11 @@
+===============================================================================
+
+Some step require your attention:
+
+  1. Update the twilio TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN in "config/initializers/twilio.rb"
+     For example:
+
+     config.account_sid = Rails.application.credentials.dig(:twilio, :account_sid)
+     config.auth_token = Rails.application.credentials.dig(:twilio, :auth_token)
+
+===============================================================================

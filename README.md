@@ -63,6 +63,7 @@ The boring generator introduces following generators:
 - [Install Devise Facebook Omniauth: `rails generate boring:oauth:facebook:install`](https://www.boringgenerators.com/blog/2021-02-07-install-oauth-facbook/)
 - Install Devise GitHub Omniauth: `rails generate boring:oauth:github:install`
 - Install Devise Google Omniauth: `rails generate boring:oauth:google:install`
+- Install Twilio: `rails generate boring:twilio:install`
 
 ## Development
 
