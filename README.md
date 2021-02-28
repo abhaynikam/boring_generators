@@ -65,6 +65,7 @@ The boring generator introduces following generators:
 - Install Devise Google Omniauth: `rails generate boring:oauth:google:install`
 - Install Devise Twitter Omniauth: `rails generate boring:oauth:twitter:install`
 - Install Twilio: `rails generate boring:twilio:install`
+- Install Ahoy: `rails generate boring:ahoy:install`
 
 ## Development
 
