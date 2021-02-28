@@ -4,5 +4,7 @@ Some setup you must do manually based on your project requirement:
 
   1. To prevent Rails actions from tracking visits: `skip_before_action :track_ahoy_visit`
   2. To associate and add association in the model with ahoy. Add `visitable :ahoy_visit` in the model.
-  
+
+You could find more configuration options on Ahoy documentation: https://github.com/ankane/ahoy
+
 ===============================================================================
