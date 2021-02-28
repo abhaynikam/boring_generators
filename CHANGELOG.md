@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.8.0 (February 28th, 2021)
 * Adds Devise Google Omniauth generator. ([@abhaynikam][])
 * Adds Devise Twitter Omniauth generator. ([@abhaynikam][])
 * Adds Twilio generator. ([@abhaynikam][])
