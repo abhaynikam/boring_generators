@@ -43,8 +43,8 @@ The boring generator introduces following generators:
 - [Install Tailwind CSS: `rails generate boring:tailwind:install`](https://www.boringgenerators.com/blog/2020-10-18-install-tailwind/)
 - [Install Bootstrap: `rails generate boring:bootstrap:install`](https://www.boringgenerators.com/blog/2020-11-15-install-bootstrap/)
 - Install JQuery: `rails generate boring:jquery:install`
-- Install FontAwesome via Yarn: `rails generate boring:font_awesome:yarn:install`
-- Install FontAwesome via RubyGems: `rails generate boring:font_awesome:ruby_gem:install`
+- [Install FontAwesome via Yarn: `rails generate boring:font_awesome:yarn:install`](https://www.boringgenerators.com/blog/2021-02-28-install-fontawesome-yarn/)
+- [Install FontAwesome via RubyGems: `rails generate boring:font_awesome:ruby_gem:install`](https://www.boringgenerators.com/blog/2021-02-23-install-fontawesome/)
 - Install Bullet: `rails generate boring:bullet:install`
 - Install Audit gems(bundler-audit, ruby_audit): `rails generate boring:audit:install`
 - Install Pry gems for easy debugging: `rails generate boring:pry:install`
