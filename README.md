@@ -40,19 +40,19 @@ And then you can use it this way:
 ## Usage
 
 The boring generator introduces following generators:
-- [Install Tailwind CSS: `rails generate boring:tailwind:install`](https://www.boringgenerators.com/blog/2020-10-18-install-tailwind/)
-- [Install Bootstrap: `rails generate boring:bootstrap:install`](https://www.boringgenerators.com/blog/2020-11-15-install-bootstrap/)
+- [Install Tailwind CSS](https://www.boringgenerators.com/blog/2020-10-18-install-tailwind/): `rails generate boring:tailwind:install`
+- [Install Bootstrap](https://www.boringgenerators.com/blog/2020-11-15-install-bootstrap/): `rails generate boring:bootstrap:install`
 - Install JQuery: `rails generate boring:jquery:install`
-- [Install FontAwesome via Yarn: `rails generate boring:font_awesome:yarn:install`](https://www.boringgenerators.com/blog/2021-02-28-install-fontawesome-yarn/)
-- [Install FontAwesome via RubyGems: `rails generate boring:font_awesome:ruby_gem:install`](https://www.boringgenerators.com/blog/2021-02-23-install-fontawesome/)
+- [Install FontAwesome via Yarn](https://www.boringgenerators.com/blog/2021-02-28-install-fontawesome-yarn/): `rails generate boring:font_awesome:yarn:install`
+- [Install FontAwesome via RubyGems](https://www.boringgenerators.com/blog/2021-02-23-install-fontawesome/): `rails generate boring:font_awesome:ruby_gem:install`
 - Install Bullet: `rails generate boring:bullet:install`
 - Install Audit gems(bundler-audit, ruby_audit): `rails generate boring:audit:install`
 - Install Pry gems for easy debugging: `rails generate boring:pry:install`
 - Install Active Storage for Google Cloud Service: `rails generate boring:active_storage:google:install`
 - Install Active Storage for AWS: `rails generate boring:active_storage:aws:install`
 - Install Active Storage for Azure: `rails generate boring:active_storage:azure:install`
-- [Install CircleCI: `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`](https://www.boringgenerators.com/blog/2021-01-02-configure-circleci/)
-- [Install GitHub Actions: `rails generate boring:ci:github_action:install --repository_name=<name> --ruby_version=<version>`](https://www.boringgenerators.com/blog/2020-12-17-configure-github-actions/)
+- [Install CircleCI](https://www.boringgenerators.com/blog/2021-01-02-configure-circleci/): `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`
+- [Install GitHub Actions](https://www.boringgenerators.com/blog/2020-12-17-configure-github-actions/): `rails generate boring:ci:github_action:install --repository_name=<name> --ruby_version=<version>`
 - Install Travis CI: `rails generate boring:ci:travisci:install --ruby_version=<version>`
 - Install Rubocop: `rails generate boring:rubocop:install --ruby_version=<version>`
 - Build Favicon: `rails generate boring:favicon:build --application_name=<application_name> --favico_letter=<favico_letter> --primary_color=<color>`
@@ -60,7 +60,7 @@ The boring generator introduces following generators:
 - Install GraphQL: `rails generate boring:graphql:install`
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 - Install Devise: `rails generate boring:devise:install`
-- [Install Devise Facebook Omniauth: `rails generate boring:oauth:facebook:install`](https://www.boringgenerators.com/blog/2021-02-07-install-oauth-facbook/)
+- [Install Devise Facebook Omniauth](https://www.boringgenerators.com/blog/2021-02-07-install-oauth-facbook/): `rails generate boring:oauth:facebook:install`
 - Install Devise GitHub Omniauth: `rails generate boring:oauth:github:install`
 - Install Devise Google Omniauth: `rails generate boring:oauth:google:install`
 - Install Devise Twitter Omniauth: `rails generate boring:oauth:twitter:install`
