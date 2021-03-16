@@ -17,4 +17,7 @@ Some setup you must do manually if you haven't yet:
 
      config.omniauth :twitter, "APP_ID", "APP_SECRET"
 
+  3. Your omniauth callback URL will be: `<host>/users/auth/twitter/callback`. Please update
+     callback URL in Twitter after registering your omniauth application.
+
 ===============================================================================
