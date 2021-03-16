@@ -17,4 +17,7 @@ Some setup you must do manually if you haven't yet:
 
      config.omniauth :facebook, "APP_ID", "APP_SECRET"
 
+  3. Your omniauth callback URL will be: `<host>/users/auth/facebook/callback`. Please update
+     callback URL in Facebook after registering your omniauth application.
+
 ===============================================================================
