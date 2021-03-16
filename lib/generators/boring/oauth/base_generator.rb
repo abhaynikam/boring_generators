@@ -45,7 +45,7 @@ module Boring
             \twhere(provider: auth.provider, uid: auth.uid).first_or_create do |user|
               \tuser.email = auth.info.email
               \tuser.password = Devise.friendly_token[0, 20]
-              \tuser.name = auth.info.name   # assuming the user model has a name
+              \t# user.name = auth.info.name   # assuming the user model has a name
               \t# user.image = auth.info.image # assuming the user model has an image
               \t# If you are using confirmable and the provider(s) you use validate emails,
               \t# uncomment the line below to skip the confirmation emails.
