@@ -66,6 +66,10 @@ The boring generator introduces following generators:
 - Install Devise Twitter Omniauth: `rails generate boring:oauth:twitter:install`
 - Install Twilio: `rails generate boring:twilio:install`
 
+## Screencasts
+
+- [How to use Boring Generators](https://www.youtube.com/watch?v=9vaK9nDMbU8) by [Yaroslav Shmarov](https://twitter.com/yarotheslav)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
