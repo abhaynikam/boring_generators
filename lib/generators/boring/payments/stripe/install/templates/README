@@ -1,0 +1,14 @@
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+    Update the stripe PUBLISHABLE_KEY and SECRET_KEY in "config/initializers/stripe.rb"
+    after registering the Rails application on: https://dashboard.stripe.com/register
+    For example:
+
+    Rails.configuration.stripe = {
+      :publishable_key => ENV['PUBLISHABLE_KEY'],
+      :secret_key      => ENV['SECRET_KEY']
+    }
+
+===============================================================================
