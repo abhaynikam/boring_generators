@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.9.0 (April 14th, 2021)
 * Adds Ahoy generator. ([@abhaynikam][])
 * Adds Stripe payment generator. ([@abhaynikam][])
 
