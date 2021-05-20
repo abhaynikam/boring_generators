@@ -2,13 +2,20 @@
 
 Some setup you must do manually if you haven't yet:
 
-    Update the stripe PUBLISHABLE_KEY and SECRET_KEY in "config/initializers/stripe.rb"
-    after registering the Rails application on: https://dashboard.stripe.com/register
-    For example:
+    1. Register your Rails application on: https://dashboard.stripe.com/register
+    2. Update the stripe PUBLISHABLE_KEY in "config/initializers/stripe.rb"
+       For example:
 
-    Rails.configuration.stripe = {
-      :publishable_key => ENV['PUBLISHABLE_KEY'],
-      :secret_key      => ENV['SECRET_KEY']
-    }
+       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+    3. Update stripe PUBLISHABLE_KEY in the "views/stripe/checkouts/create.js.erb"
+       For example:
+
+       var stripe = Stripe(ENV["STRIPE_PUBLISHABLE_KEY"]);
+
+    4. Update "controllers/stripe/checkouts_controller.rb" with stripe checkout
+       line_items, success and failure callback URLs.
+
+    5. Go to: http://localhost:3000/stripe/checkout and try the checkout flow.
 
 ===============================================================================
