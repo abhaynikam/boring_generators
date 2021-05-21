@@ -14,25 +14,24 @@ module Boring
           end
         end
 
-        def add_charges_controller
-          say "Adding stripe charge resources"
-          copy_file("controllers/charges_controller.rb", "app/controllers/charges_controller.rb")
+        def add_checkouts_resources
+          say "Adding stripe checkout resources"
+          copy_file("controllers/stripe/checkouts_controller.rb", "app/controllers/stripe/checkouts_controller.rb")
+          copy_file("views/stripe/checkouts/create.js.erb", "app/views/stripe/checkouts/create.js.erb")
+          copy_file("views/stripe/checkouts/show.html.erb", "app/views/stripe/checkouts/show.html.erb")
         end
 
         def add_stripe_routes
-          route "resources :charges"
+          route <<~ROUTE
+            namespace :stripe do
+              resource :checkout, only: [:create, :show]
+            end
+          ROUTE
         end
 
         def add_stripe_initializer
           say "Adding stripe initalizers"
           copy_file("stripe.rb", "config/initializers/stripe.rb")
-        end
-
-        def add_stripe_views
-          say "Adding stripe views and layout"
-          copy_file("views/charges.html.erb", "app/views/layouts/charges.html.erb")
-          copy_file("views/new.html.erb", "app/views/charges/new.html.erb")
-          copy_file("views/create.html.erb", "app/views/charges/create.html.erb")
         end
 
         def show_readme

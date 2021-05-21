@@ -1,0 +1,8 @@
+<div style="text-align:center;">
+  <h1>Checkout View</h1>
+  <h5>(from <a href="https://github.com/abhaynikam/boring_generators">Boring Generator Gem</a>)</h5>
+
+  <%= button_to "Try Checkout", stripe_checkout_path, remote: true, class: "btn btn-primary" %>
+  <script src="https://js.stripe.com/v3/"></script>
+</div>
+
