@@ -8,14 +8,9 @@ module Boring
 
         def add_font_awesome_sass_gem
           say "Adding font_awesome_sass gem", :green
-
-          font_awesome_sass_gem = <<~RUBY
-            \n
-            # for adding font-awesome icons
-            gem 'font-awesome-sass', '~> 5.13'
-          RUBY
-          append_to_file "Gemfile", font_awesome_sass_gem
-          run "bundle install"
+          Bundler.with_unbundled_env do
+            run "bundle add font-awesome-sass"
+          end
         end
 
         def import_font_awesome_stylesheet
