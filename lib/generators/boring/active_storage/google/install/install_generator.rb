@@ -16,13 +16,15 @@ module Boring
 
         def add_google_cloud_storage_to_the_application
           say "Adding google cloud storage gem", :green
-          google_cloud_storage_gem_content = <<~RUBY
-            \n
-            # for Google Cloud Storage Service
-            gem "google-cloud-storage", require: false
-          RUBY
-          append_to_file "Gemfile", google_cloud_storage_gem_content
-          run "bundle install"
+          Bundler.with_unbundled_env do
+            google_cloud_storage_gem_content = <<~RUBY
+              \n
+              # for Google Cloud Storage Service
+              gem "google-cloud-storage", require: false
+            RUBY
+            append_to_file "Gemfile", google_cloud_storage_gem_content
+            run "bundle install"
+          end
         end
 
         def add_configuration_to_production

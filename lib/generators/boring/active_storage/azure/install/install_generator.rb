@@ -16,13 +16,15 @@ module Boring
 
         def add_azure_to_the_application
           say "Adding mircosoft azure gem", :green
-          azure_gem_content = <<~RUBY
-            \n
-            # for Azure Service
-            gem "azure-storage-blob", require: false
-          RUBY
-          append_to_file "Gemfile", azure_gem_content
-          run "bundle install"
+          Bundler.with_unbundled_env do
+            azure_gem_content = <<~RUBY
+              \n
+              # for Azure Service
+              gem "azure-storage-blob", require: false
+            RUBY
+            append_to_file "Gemfile", azure_gem_content
+            run "bundle install"
+          end
         end
 
         def add_configuration_to_production

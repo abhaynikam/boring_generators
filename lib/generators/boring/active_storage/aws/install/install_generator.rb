@@ -15,14 +15,16 @@ module Boring
         end
 
         def add_aws_to_the_application
-          say "Adding AWS gem", :green
-          aws_gem_content = <<~RUBY
-            \n
-            # for AWS Service
-            gem "aws-sdk-s3", require: false
-          RUBY
-          append_to_file "Gemfile", aws_gem_content
-          run "bundle install"
+          Bundler.with_unbundled_env do
+            say "Adding AWS gem", :green
+            aws_gem_content = <<~RUBY
+              \n
+              # for AWS Service
+              gem "aws-sdk-s3", require: false
+            RUBY
+            append_to_file "Gemfile", aws_gem_content
+            run "bundle install"
+          end
         end
 
         def add_configuration_to_production
