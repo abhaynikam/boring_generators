@@ -16,14 +16,8 @@ module Boring
 
         def add_facebook_omniauth_gem
           say "Adding Facebook OmniAuth gem", :green
-          facebook_omniauth_gem = <<~RUBY
-            \n
-            # for omniauth facebook
-            gem 'omniauth-facebook', '~> 8.0'
-          RUBY
-          append_to_file "Gemfile", facebook_omniauth_gem
           Bundler.with_unbundled_env do
-            run "bundle install"
+            run "bundle add omniauth-facebook"
           end
         end
 
