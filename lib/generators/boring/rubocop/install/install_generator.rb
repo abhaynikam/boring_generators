@@ -23,7 +23,9 @@ module Boring
           \tgem "rubocop-performance", require: false
         RUBY
         insert_into_file "Gemfile", bullet_gem_content, after: /group :development do/
-        run "bundle install"
+        Bundler.with_unbundled_env do
+          run "bundle install"
+        end
       end
 
       def add_rails_prefered_rubocop_rules
