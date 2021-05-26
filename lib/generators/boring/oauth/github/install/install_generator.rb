@@ -16,14 +16,8 @@ module Boring
 
         def add_github_omniauth_gem
           say "Adding GitHub OmniAuth gem", :green
-          github_omniauth_gem = <<~RUBY
-            \n
-            # for omniauth github
-            gem 'omniauth-github', '~> 1.4.0'
-          RUBY
-          append_to_file "Gemfile", github_omniauth_gem
           Bundler.with_unbundled_env do
-            run "bundle install"
+            run "bundle add omniauth-github"
           end
         end
 
