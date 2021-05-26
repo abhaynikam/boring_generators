@@ -15,13 +15,9 @@ module Boring
 
       def add_bullet_gem
         say "Adding SimpleForm gem", :green
-        simple_form_content = <<~RUBY
-          \n
-          # for simple forms
-          gem 'simple_form', '~> 5.0'
-        RUBY
-        append_to_file "Gemfile", simple_form_content
-        run "bundle install"
+        Bundler.with_unbundled_env do
+          run "bundle add simple_form"
+        end
       end
 
       def run_simple_form_generator
@@ -29,7 +25,7 @@ module Boring
 
         say "Running SimpleForm Generator", :green
         if options[:css_framework].present? && ALLOWED_CSS_FRAMEWORK.include?(options[:css_framework])
-          run "rails generate simple_form:install --#{options[:css_framework]}"
+          run "DISABLE_SPRING=1 bundle exec rails generate simple_form:install --#{options[:css_framework]}"
         elsif options[:css_framework].present?
           say <<~WARNING, :red
             ERROR: Invalid option css_framework: #{options[:css_framework]}. Generator allows css_framework: #{ALLOWED_CSS_FRAMEWORK.join(", ")}
