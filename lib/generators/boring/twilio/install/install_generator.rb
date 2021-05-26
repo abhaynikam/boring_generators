@@ -8,13 +8,9 @@ module Boring
 
       def add_twilio_ruby_gem
         say "Adding Twilio gem", :green
-        twilio_gem_content = <<~RUBY
-          \n
-          # for twilio REST APIs
-          gem 'twilio-ruby', '~> 5.47'
-        RUBY
-        append_to_file "Gemfile", twilio_gem_content
-        run "bundle install"
+        Bundler.with_unbundled_env do
+          run "bundle add twilio-ruby"
+        end
       end
 
       def add_twilio_configurations
