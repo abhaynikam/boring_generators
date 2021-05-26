@@ -9,6 +9,7 @@ class BulletInstallGeneratorTest < Rails::Generators::TestCase
   teardown :teardown_app
 
   include GeneratorHelper
+  include ActiveSupport::Testing::Isolation
 
   def destination_root
     app_path
@@ -18,10 +19,7 @@ class BulletInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       quietly { run_generator }
 
-      assert_file "Gemfile" do |content|
-        assert_match(/bullet/, content)
-      end
-
+      assert_gem "bullet"
       assert_file "config/initializers/bullet.rb"
     end
   end

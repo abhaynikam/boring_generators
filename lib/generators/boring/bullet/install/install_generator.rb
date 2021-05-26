@@ -10,14 +10,10 @@ module Boring
                                         desc: "Skips adding bullet development configuration"
 
       def add_bullet_gem
-        say "Adding Bullet gem", :green
-        bullet_gem_content = <<~RUBY
-          \n
-          \t# reports N+1 queries
-          \tgem "bullet"
-        RUBY
-        insert_into_file "Gemfile", bullet_gem_content, after: /group :development do/
-        run "bundle install"
+        say "Adding bullet gem", :green
+        Bundler.with_unbundled_env do
+          run "bundle add bullet --group development"
+        end
       end
 
       def add_bullet_gem_configuration
