@@ -2,10 +2,13 @@
 
 ## master (unreleased)
 
+## 0.10.0 (May 26th, 2021)
+* Updates Stripe payment generator. ([@abhaynikam][])
+* Fixes many generators which install ruby gems to not hardcode gem version. ([@abhaynikam][])
+
 ## 0.9.0 (April 14th, 2021)
 * Adds Ahoy generator. ([@abhaynikam][])
 * Adds Stripe payment generator. ([@abhaynikam][])
-* Fixes many generators which install ruby gems to not hardcode gem version. ([@abhaynikam][])
 
 ## 0.8.0 (February 28th, 2021)
 * Adds Devise Google Omniauth generator. ([@abhaynikam][])
