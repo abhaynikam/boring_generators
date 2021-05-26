@@ -7,15 +7,10 @@ module Boring
       source_root File.expand_path("templates", __dir__)
 
       def add_bullet_gem
-        say "Adding Bullet gem", :green
-        pry_gem_content = <<~RUBY
-          \n
-          # for using pry as Rails console
-          gem "pry"
-          gem "pry-rails"
-        RUBY
-        append_to_file "Gemfile", pry_gem_content
-        run "bundle install"
+        say "Adding pry gems", :green
+        Bundler.with_unbundled_env do
+          run "bundle add pry pry-rails"
+        end
       end
 
       def add_pryrc_configuration
