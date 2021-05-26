@@ -9,6 +9,7 @@ class DeviseInstallGeneratorTest < Rails::Generators::TestCase
   teardown :teardown_app
 
   include GeneratorHelper
+  include ActiveSupport::Testing::Isolation
 
   def destination_root
     app_path

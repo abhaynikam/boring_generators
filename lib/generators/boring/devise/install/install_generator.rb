@@ -16,14 +16,8 @@ module Boring
 
       def add_devise_gem
         say "Adding devise gem", :green
-        devise_gem = <<~RUBY
-          \n
-          # for authentication
-          gem 'devise', '~> 4.7'
-        RUBY
-        append_to_file "Gemfile", devise_gem
         Bundler.with_unbundled_env do
-          run "bundle install"
+          run "bundle add devise"
         end
       end
 
