@@ -68,6 +68,7 @@ The boring generator introduces following generators:
 - Install Ahoy: `rails generate boring:ahoy:install`
 - Install Stripe: `rails generate boring:payments:stripe:install`
 - Install Stimulus: `rails generate boring:stimulus:install`
+- Install Rails Admin: `rails generate boring:rails_admin:install`
 
 ## Screencasts
 
