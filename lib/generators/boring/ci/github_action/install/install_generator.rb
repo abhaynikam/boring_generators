@@ -10,7 +10,7 @@ module Boring
         RUBY_VERSION_FILE = ".ruby-version"
 
         DEFAULT_RUBY_VERSION = ".ruby-version"
-        DEFAULT_NODE_VERSION = "10.13.0"
+        DEFAULT_NODE_VERSION = "14"
         DEFAULT_REPOSITORY_NAME = "boring_generators"
 
         class_option :ruby_version,     type: :string, aliases: "-v",

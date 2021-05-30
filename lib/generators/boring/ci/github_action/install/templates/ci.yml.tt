@@ -1,5 +1,9 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   test:
     name: Tests
@@ -10,8 +14,9 @@ jobs:
         env:
           POSTGRES_USER: <%= @repository_name %>
           POSTGRES_DB: <%= "#{@repository_name}_test" %>
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: postgres
         ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - name: Checkout code
@@ -25,6 +30,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: <%= @node_version %>
+      - name: Install library for postgres
+        run: sudo apt-get install libpq-dev
       - name: Find yarn cache location
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -43,7 +50,13 @@ jobs:
           RAILS_ENV: test
           PGHOST: localhost
           PGUSER: <%= @repository_name %>
+          PGPASSWORD: postgres
         run: |
           bin/rails db:setup
       - name: Run tests
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: <%= @repository_name %>
+          PGPASSWORD: postgres
         run: bundle exec rails test # TODO: Update the test runner command as per your requirement.
