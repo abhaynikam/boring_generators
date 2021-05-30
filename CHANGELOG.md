@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Adds Stimulus generator. ([@abhaynikam][])
 * Adds Rails Admin generator. ([@abhaynikam][])
+* Adds Paper Trail generator. ([@abhaynikam][])
 
 ## 0.10.0 (May 26th, 2021)
 * Updates Stripe payment generator. ([@abhaynikam][])
