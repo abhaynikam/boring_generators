@@ -7,7 +7,7 @@ module Boring
       source_root File.expand_path("templates", __dir__)
 
       class_option :skip_generator, type: :boolean, aliases: "-sg",
-                   desc: "Skip running Pundit install generator"
+                   desc: "Skip running rails_admin install generator"
       class_option :route_name, type: :string, aliases: "-r",
                    desc: "Mount the rails_admin engine on route"
 
