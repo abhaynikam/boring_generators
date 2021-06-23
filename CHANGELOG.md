@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])
 * Adds Rails Admin generator. ([@abhaynikam][])
 * Adds Paper Trail generator. ([@abhaynikam][])
