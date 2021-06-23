@@ -21,7 +21,7 @@ class GithubActionInstallGeneratorTest < Rails::Generators::TestCase
       assert_file ".github/workflows/ci.yml" do |content|
         assert_match("boring_generators_test", content)
         assert_match(".ruby-version", content)
-        assert_match("10.13.0", content)
+        assert_match("14", content)
       end
     end
   end
