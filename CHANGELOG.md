@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds Flipper generator. ([@abhaynikam][])
 
 ## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])

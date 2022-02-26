@@ -1,0 +1,19 @@
+require 'flipper/ui'
+require "flipper/adapters/active_record"
+
+Flipper::UI.configure do |config|
+  if Rails.env.production?
+    config.banner_text = "Production Environment"
+  else
+    config.banner_text = "Non-Production Environment"
+    config.banner_class = "primary"
+  end
+
+  config.fun = false
+  config.cloud_recommendation = false
+end
+
+# - Define All Actor here -
+Flipper.register(:admins) do |actor, context|
+  actor.respond_to?(:admin?) && actor.admin?
+end
