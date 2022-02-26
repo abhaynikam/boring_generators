@@ -15,8 +15,10 @@ module Boring
 
       def run_flipper_active_record_generator
         say "Running Active Record Flipper generator", :green
-        run "bundle exec rails generate flipper:active_record"
-        run "bundle exec rails db:migrate"
+        Bundler.with_unbundled_env do
+          run "bundle exec rails generate flipper:active_record"
+          run "bundle exec rails db:migrate"
+        end
       end
 
       def add_flipper_initializer
