@@ -8,7 +8,7 @@ module Boring
 
       def add_bootstrap_package
         say "Adding bootstrap packages", :green
-        run "yarn add bootstrap jquery popper.js"
+        run "yarn add bootstrap jquery @popperjs/core"
       end
 
       def add_jquery_plugin_provider_to_webpack_environment
@@ -48,6 +48,20 @@ module Boring
             \n
             import "bootstrap"
             import "stylesheets/application"
+            import { Tooltip, Popover } from "bootstrap"
+
+            document.addEventListener("turbolinks:load", () => {
+              // Both of these are from the Bootstrap 5 docs
+              var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+              var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                  return new Tooltip(tooltipTriggerEl)
+              })
+
+              var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+              var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+                  return new Popover(popoverTriggerEl)
+              })
+            })
           RUBY
           append_to_file "app/javascript/packs/application.js", application_js_content
         else
