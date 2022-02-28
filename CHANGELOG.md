@@ -2,6 +2,7 @@
 
 ## master (unreleased)
 * Adds Flipper generator. ([@abhaynikam][])
+* Updates Bootstrap generator for supporting Bootstrap 5 with popper.js. ([@abhaynikam][])
 
 ## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])
