@@ -4,6 +4,7 @@
 * Adds Flipper generator. ([@abhaynikam][])
 * Adds FactoryBot generator. ([@abhaynikam][])
 * Adds Faker generator. ([@abhaynikam][])
+* Adds RSpec generator. ([@abhaynikam][])
 * Update default node-version for GitHub Action generator and fixes PG setup issues. ([@abhaynikam][])
 
 ## 0.11.0 (June 23rd, 2021)
