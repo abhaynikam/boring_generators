@@ -71,6 +71,7 @@ The boring generator introduces following generators:
 - Install Rails Admin: `rails generate boring:rails_admin:install`
 - Install Paper Trail: `rails generate boring:paper_trail:install`
 - Install Flipper: `rails generate boring:flipper:install`
+- Install FactoryBot: `rails generate boring:factory_bot:install`
 
 ## Screencasts
 

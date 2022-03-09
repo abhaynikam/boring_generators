@@ -15,14 +15,14 @@ module Boring
 
       def add_rubocop_gems
         say "Adding rubocop gems", :green
-        bullet_gem_content = <<~RUBY
+        rubocop_gem_content = <<~RUBY
           \n
           \t# A Ruby static code analyzer, based on the community Ruby style guide
           \tgem "rubocop",  require: false
           \tgem "rubocop-rails",  require: false
           \tgem "rubocop-performance", require: false
         RUBY
-        insert_into_file "Gemfile", bullet_gem_content, after: /group :development do/
+        insert_into_file "Gemfile", rubocop_gem_content, after: /group :development do/
         Bundler.with_unbundled_env do
           run "bundle install"
         end
