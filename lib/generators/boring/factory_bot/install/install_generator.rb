@@ -8,9 +8,11 @@ module Boring
 
       class_option :skip_factory, type: :boolean, aliases: "-s",
                                   desc: "Skips adding sample factory"
+      class_option :skip_faker, type: :boolean, aliases: "-s",
+                                desc: "Skips faker install"
 
       def add_factory_bot_gem
-        say "Adding FactoryBot gem", :green
+        log :adding, "FactoryBot"
         Bundler.with_unbundled_env do
           run "bundle add factory_bot_rails --group='developement,test'"
         end
@@ -19,12 +21,12 @@ module Boring
       def add_sample_factory
         return if options[:skip_factory]
 
-        say "Adding example factory", :green
+        log :adding, "Sample users factory"
         copy_file "users.rb", "test/factories/users.rb"
       end
 
       def add_factory_bot_helper_method
-        say "Adding factory_bot helper method", :green
+        log :adding, "factory_bot helper"
         data = <<~RUBY
           include FactoryBot::Syntax::Methods
         RUBY
@@ -32,6 +34,12 @@ module Boring
         inject_into_file "test/test_helper.rb", optimize_indentation(data, 2),
                                                 after: /ActiveSupport::TestCase*\n/,
                                                 verbose: false
+      end
+
+      def add_faker_gem
+        return if options[:skip_faker]
+
+        Rails::Command.invoke :generate, ["boring:faker:install"]
       end
     end
   end
