@@ -2,13 +2,16 @@
 
 ## master (unreleased)
 * Adds Flipper generator. ([@abhaynikam][])
+* Adds FactoryBot generator. ([@abhaynikam][])
+* Adds Faker generator. ([@abhaynikam][])
+* Adds RSpec generator. ([@abhaynikam][])
+* Update default node-version for GitHub Action generator and fixes PG setup issues. ([@abhaynikam][])
 * Updates Bootstrap generator for supporting Bootstrap 5 with popper.js. ([@abhaynikam][])
 
 ## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])
 * Adds Rails Admin generator. ([@abhaynikam][])
 * Adds Paper Trail generator. ([@abhaynikam][])
-* Update default node-version for GitHub Action generator and fixes PG setup issues. ([@abhaynikam][])
 
 ## 0.10.0 (May 26th, 2021)
 * Updates Stripe payment generator. ([@abhaynikam][])
