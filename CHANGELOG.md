@@ -6,6 +6,7 @@
 * Adds Faker generator. ([@abhaynikam][])
 * Adds RSpec generator. ([@abhaynikam][])
 * Update default node-version for GitHub Action generator and fixes PG setup issues. ([@abhaynikam][])
+* Updates Bootstrap generator for supporting Bootstrap 5 with popper.js. ([@abhaynikam][])
 
 ## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])
