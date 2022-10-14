@@ -15,6 +15,7 @@ module Boring
                    desc: "Skip generating devise model"
 
       def add_devise_gem
+        puts "hello world"
         say "Adding devise gem", :green
         Bundler.with_unbundled_env do
           run "bundle add devise"
