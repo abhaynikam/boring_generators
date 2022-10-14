@@ -15,7 +15,6 @@ module Boring
                    desc: "Skip generating devise model"
 
       def add_devise_gem
-        puts "hello world"
         say "Adding devise gem", :green
         Bundler.with_unbundled_env do
           run "bundle add devise"
@@ -63,6 +62,11 @@ module Boring
 
         Bundler.with_unbundled_env do
           run "DISABLE_SPRING=1 bundle exec rails generate devise:views #{model_name.pluralize}"
+        end
+        def add_turbo_stream
+          insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /Devise.setup do |config|/
+          \n
+          \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
         end
       end
     end
