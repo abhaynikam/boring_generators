@@ -63,12 +63,12 @@ module Boring
         Bundler.with_unbundled_env do
           run "DISABLE_SPRING=1 bundle exec rails generate devise:views #{model_name.pluralize}"
         end
-        def add_turbo_stream
-          insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'/
-            \n
-            \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
-         RUBY
-        end
+      end
+      def add_turbo_stream
+        insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'/
+          \n
+          \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
+       RUBY
       end
     end
   end
