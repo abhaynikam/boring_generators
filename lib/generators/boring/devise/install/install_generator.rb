@@ -65,8 +65,9 @@ module Boring
         end
         def add_turbo_stream
           insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /Devise.setup do |config|/
-          \n
-          \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
+            \n
+            \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
+         RUBY
         end
       end
     end
