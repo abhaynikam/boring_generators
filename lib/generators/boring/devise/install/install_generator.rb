@@ -67,7 +67,7 @@ module Boring
         end
       end
       def add_turbo_stream
-        if options[:add_turbo]
+        return if !options[:add_turbo]
           insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'/
             \n
             \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
