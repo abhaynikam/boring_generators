@@ -13,8 +13,8 @@ module Boring
                    desc: "Skip generating devise views"
       class_option :skip_devise_model, type: :boolean, aliases: "-sm",
                    desc: "Skip generating devise model"
-      class_option :skip_devise_turbo, type: :boolean, aliases: "-st",
-                   desc: "skip enabling turbo methods"
+      class_option :add_turbo, type: :boolean, aliases: "-at",
+                   desc: "Add turbo to navigational formats"
 
       def add_devise_gem
         say "Adding devise gem", :green
@@ -67,12 +67,12 @@ module Boring
         end
       end
       def add_turbo_stream
-        return if options[:skip_devise_turbo]
-        
-        insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'/
-          \n
-          \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
-       RUBY
+        if options[:add_turbo]
+          insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'/
+            \n
+            \tconfig.navigational_formats = ['*/*', :html, :turbo_stream]
+        RUBY
+        end
       end
     end
   end
