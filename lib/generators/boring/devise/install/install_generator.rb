@@ -69,9 +69,9 @@ module Boring
       def add_turbo_stream
         puts options[:add_turbo]
         puts "hello world"
-        say "Hello world"
-        say " options #{options[:add_turbo]} "
-        return if options[:add_turbo] == false
+        say "Hello world" , :green
+        say " options #{options[:add_turbo]} " , :green 
+        return if options[:add_turbo] == false 
          
           insert_into_file "config/initializers/devise.rb", <<~RUBY, after: /config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'/
             \n
