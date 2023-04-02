@@ -7,6 +7,7 @@
 * Adds RSpec generator. ([@abhaynikam][])
 * Update default node-version for GitHub Action generator and fixes PG setup issues. ([@abhaynikam][])
 * Updates Bootstrap generator for supporting Bootstrap 5 with popper.js. ([@abhaynikam][])
+* Adds Overcommit generator for RuboCop. ([@coolprobn][])
 
 ## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])
@@ -72,3 +73,4 @@
 [@CiTroNaK]: https://github.com/CiTroNaK
 [@jamesglover]: https://github.com/JamesGlover
 [@luathn]: https://github.com/luathn
+[@coolprobn]: https://github.com/coolprobn
