@@ -15,6 +15,29 @@ class OvercommitPreCommitInstallGeneratorTest < Rails::Generators::TestCase
     app_path
   end
 
+  def test_should_install_rubocop_if_not_installed
+    original_stdout = $stdout
+    $stdout = StringIO.new
+
+    Dir.chdir(app_path) do
+      expected = "RuboCop gem is not installed. Running the generator to install it!"
+
+      quietly { generator.check_and_install_rubocop }
+
+      $stdout.rewind
+
+      assert_match expected, $stdout.read
+
+      assert_file "Gemfile" do |content|
+        assert_match(/rubocop/, content)
+        assert_match(/rubocop-rails/, content)
+        assert_match(/rubocop-performance/, content)
+      end
+    end
+  ensure
+    $stdout = original_stdout
+  end
+
   def test_should_configure_rubocop
     Dir.chdir(app_path) do
       Bundler.with_unbundled_env do
@@ -71,22 +94,5 @@ class OvercommitPreCommitInstallGeneratorTest < Rails::Generators::TestCase
 
       assert_empty pre_commit_errors
     end
-  end
-
-  def test_should_exit_if_rubocop_is_not_installed
-    original_stdout = $stdout
-    $stdout = StringIO.new
-
-    Dir.chdir(app_path) do
-      expected = "rubocop gem is not installed. Please install it and run the generator again!"
-
-      quietly { generator.configure_rubocop }
-
-      $stdout.rewind
-
-      assert_match expected, $stdout.read
-    end
-  ensure
-    $stdout = original_stdout
   end
 end
