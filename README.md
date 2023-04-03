@@ -74,6 +74,7 @@ The boring generator introduces following generators:
 - Install RSpec: `rails generate boring:rspec:install`
 - Install FactoryBot: `rails generate boring:factory_bot:install`
 - Install Faker: `rails generate boring:faker:install`
+- Install Overcommit with RuboCop: `rails generate boring:overcommit:pre_commit:rubocop:install`
 
 ## Screencasts
 

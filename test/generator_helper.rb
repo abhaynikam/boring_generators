@@ -44,6 +44,14 @@ module GeneratorHelper
     RUBY
   end
 
+  def build_app_with_git
+    build_app
+
+    Dir.chdir(app_path) do
+      system!('git init')
+    end
+  end
+
   def add_to_config(str)
     environment = File.read("#{app_path}/config/application.rb")
     if environment =~ /(\n\s*end\s*end\s*)\z/
@@ -55,5 +63,11 @@ module GeneratorHelper
 
   def teardown_app
     FileUtils.rm_rf(tmp_path)
+  end
+
+  private
+
+  def system!(*args)
+    system(*args) || abort("\n== Command #{args} failed ==")
   end
 end
