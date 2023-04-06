@@ -3,7 +3,7 @@
 module Boring
   module LetterOpener
     class InstallGenerator < Rails::Generators::Base
-      desc "Adds Letter Opener to the application for previewing email in the default browser instead of sending it"
+      desc "Adds Letter Opener gem to the application for previewing email in the default browser instead of sending it"
 
       def add_letter_opener_gem
         say "Adding letter_opener gem", :green
