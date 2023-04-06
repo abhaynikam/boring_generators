@@ -54,7 +54,7 @@ The boring generator introduces following generators:
 - [Install CircleCI](https://www.boringgenerators.com/blog/2021-01-02-configure-circleci/): `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`
 - [Install GitHub Actions](https://www.boringgenerators.com/blog/2020-12-17-configure-github-actions/): `rails generate boring:ci:github_action:install --repository_name=<name> --ruby_version=<version>`
 - Install Travis CI: `rails generate boring:ci:travisci:install --ruby_version=<version>`
-- Install Rubocop: `rails generate boring:rubocop:install --ruby_version=<version>`
+- Install Rubocop: `rails generate boring:rubocop:install --ruby_version=<version> --test_gem=<test_framework_name>`
 - Build Favicon: `rails generate boring:favicon:build --application_name=<application_name> --favico_letter=<favico_letter> --primary_color=<color>`
 - Install Pundit: `rails generate boring:pundit:install`
 - Install GraphQL: `rails generate boring:graphql:install`

@@ -1,8 +1,12 @@
 require:
   - rubocop-performance
   - rubocop-rails
+  - rubocop-rake
+<%- if @test_gem_extension -%>
+  - <%= @test_gem_extension %>
+<%- end -%>
 
-<%- unless @skip_adding_rules %>
+<%- unless @skip_adding_rules -%>
 AllCops:
   TargetRubyVersion: <%= @target_ruby_version %>
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
@@ -258,5 +262,4 @@ Performance/DeletePrefix:
 
 Performance/DeleteSuffix:
   Enabled: true
-  
-<% end %>
+<%- end -%>

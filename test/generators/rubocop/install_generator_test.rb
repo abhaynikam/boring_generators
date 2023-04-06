@@ -23,6 +23,7 @@ class RubocopInstallGeneratorTest < Rails::Generators::TestCase
         assert_match(/rubocop/, content)
         assert_match(/rubocop-rails/, content)
         assert_match(/rubocop-performance/, content)
+        assert_match(/rubocop-rake/, content)
       end
 
       assert_file ".rubocop.yml" do |content|
@@ -36,15 +37,9 @@ class RubocopInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       quietly { run_generator [destination_root, "--skip_adding_rubocop_rules"] }
 
-      assert_file "Gemfile" do |content|
-        assert_match(/rubocop/, content)
-        assert_match(/rubocop-rails/, content)
-        assert_match(/rubocop-performance/, content)
-      end
-
       assert_file ".rubocop.yml" do |content|
-        assert_no_match("2.7.1", content)
         assert_no_match("AllCops", content)
+        assert_no_match("2.7.1", content)
       end
     end
   end
@@ -53,15 +48,9 @@ class RubocopInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       quietly { run_generator [destination_root, "--ruby_version=2.6.3"] }
 
-      assert_file "Gemfile" do |content|
-        assert_match(/rubocop/, content)
-        assert_match(/rubocop-rails/, content)
-        assert_match(/rubocop-performance/, content)
-      end
-
       assert_file ".rubocop.yml" do |content|
-        assert_match("2.6.3", content)
         assert_match("AllCops", content)
+        assert_match("2.6.3", content)
       end
     end
   end
