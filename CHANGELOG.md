@@ -9,6 +9,7 @@
 * Updates Bootstrap generator for supporting Bootstrap 5 with popper.js. ([@abhaynikam][])
 * Adds Overcommit generator for RuboCop. ([@coolprobn][])
 * Updates RuboCop generator to add rubocop-rake extension and support test frameworks ([@coolprobn][])
+* Adds Rswag generator. ([@coolprobn][])
 
 ## 0.11.0 (June 23rd, 2021)
 * Adds Stimulus generator. ([@abhaynikam][])

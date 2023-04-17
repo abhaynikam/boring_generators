@@ -36,19 +36,22 @@ module GeneratorHelper
     end
 
     add_to_config <<-RUBY
+      config.root = "#{app_path}"
       config.hosts << proc { true }
       config.eager_load = false
       config.session_store :cookie_store, key: "_myapp_session"
       config.active_support.deprecation = :log
       config.action_controller.allow_forgery_protection = false
     RUBY
+
+    ENV["BUNDLE_GEMFILE"] = "#{app_path}/Gemfile"
   end
 
   def build_app_with_git
     build_app
 
     Dir.chdir(app_path) do
-      system!('git init')
+      quietly { system!('git init') }
     end
   end
 
