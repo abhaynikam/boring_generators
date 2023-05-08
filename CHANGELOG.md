@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.12.0 (May 8th, 2023)
 * Adds Flipper generator. ([@abhaynikam][])
 * Adds FactoryBot generator. ([@abhaynikam][])
 * Adds Faker generator. ([@abhaynikam][])
