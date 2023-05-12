@@ -3,7 +3,7 @@
 module Boring
   module LetterOpener
     class InstallGenerator < Rails::Generators::Base
-      desc "Adds Letter Opener gem to the application for previewing email in the default browser instead of sending it"
+      desc "Adds letter_opener gem for previewing email in development environment"
 
       def add_letter_opener_gem
         say "Adding letter_opener gem", :green
@@ -24,14 +24,15 @@ module Boring
         say "Configuring letter_opener", :green
 
         configuration_content = <<~RUBY.chomp
-          \n
+          \n\t# Preview email in the browser instead of sending it
           \tconfig.action_mailer.delivery_method = :letter_opener
           \tconfig.action_mailer.perform_deliveries = true
+          end
         RUBY
 
-        insert_into_file "config/environments/development.rb",
-                         configuration_content,
-                         after: /config.action_mailer.perform_caching = (true|false)/
+        gsub_file "config/environments/development.rb",
+                  /end\Z/,
+                  configuration_content
       end
     end
   end

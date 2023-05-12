@@ -3,7 +3,7 @@
 require "test_helper"
 require "generators/boring/letter_opener/install/install_generator"
 
-class AuditInstallGeneratorTest < Rails::Generators::TestCase
+class LetterOpenerInstallGeneratorTest < Rails::Generators::TestCase
   tests Boring::LetterOpener::InstallGenerator
   setup :build_app
   teardown :teardown_app
@@ -26,7 +26,7 @@ class AuditInstallGeneratorTest < Rails::Generators::TestCase
 
   def test_should_add_gem_configurations
     Dir.chdir(app_path) do
-      quietly { generator.configure_letter_opener }
+      quietly { run_generator }
 
       assert_file "config/environments/development.rb" do |content|
         assert_match(/config.action_mailer.delivery_method = :letter_opener/, content)
