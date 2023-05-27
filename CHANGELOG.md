@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds Letter Opener generator. ([@coolprobn][])
 
 ## 0.12.0 (May 8th, 2023)
 * Adds Flipper generator. ([@abhaynikam][])
