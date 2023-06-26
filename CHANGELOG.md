@@ -2,6 +2,7 @@
 
 ## master (unreleased)
 * Adds Letter Opener generator. ([@coolprobn][])
+* Adds Whenever generator. ([@aadil][])
 
 ## 0.12.0 (May 8th, 2023)
 * Adds Flipper generator. ([@abhaynikam][])
@@ -78,3 +79,4 @@
 [@jamesglover]: https://github.com/JamesGlover
 [@luathn]: https://github.com/luathn
 [@coolprobn]: https://github.com/coolprobn
+[@aadil]: https://github.com/AdilRT
