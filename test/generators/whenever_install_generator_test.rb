@@ -23,7 +23,7 @@ class WheneverInstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  def test_should_generate_schedule_file
+  def test_should_configure_whenever
     Dir.chdir(app_path) do
       quietly { run_generator }
 
