@@ -3,7 +3,7 @@
 module Boring
   module Whenever
     class InstallGenerator < Rails::Generators::Base
-      desc "Adds whenever gem to the application"
+      desc "Adds whenever gem to the application for managing cron jobs"
 
       def add_whenever_gem
         say "Adding whenever gem", :green
