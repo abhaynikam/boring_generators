@@ -13,8 +13,8 @@ module Boring
         end
       end
 
-      def run_whenever_generator
-          say "Running whenever generator", :green
+      def add_schedule_file
+          say "Create schedule.rb file", :green
 
           Bundler.with_unbundled_env do
             run "bundle exec wheneverize ."
