@@ -47,16 +47,23 @@ The boring generator introduces following generators:
 - Install Active Storage for Google Cloud Service: `rails generate boring:active_storage:google:install`
 - Install Ahoy: `rails generate boring:ahoy:install`
 - Install Audit gems(bundler-audit, ruby_audit): `rails generate boring:audit:install`
+- [Install Bootstrap](https://www.boringgenerators.com/blog/2020-11-15-install-bootstrap/): `rails generate boring:bootstrap:install`
 - Install Bullet: `rails generate boring:bullet:install`
+- [Install CircleCI](https://www.boringgenerators.com/blog/2021-01-02-configure-circleci/): `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`
+- Install Devise: `rails generate boring:devise:install`
+- [Install Devise Facebook Omniauth](https://www.boringgenerators.com/blog/2021-02-07-install-oauth-facbook/): `rails generate boring:oauth:facebook:install`
 - Install Devise GitHub Omniauth: `rails generate boring:oauth:github:install`
 - Install Devise Google Omniauth: `rails generate boring:oauth:google:install`
 - Install Devise Twitter Omniauth: `rails generate boring:oauth:twitter:install`
-- Install Devise: `rails generate boring:devise:install`
 - Install FactoryBot: `rails generate boring:factory_bot:install`
 - Install Faker: `rails generate boring:faker:install`
 - Install Flipper: `rails generate boring:flipper:install`
+- [Install FontAwesome via RubyGems](https://www.boringgenerators.com/blog/2021-02-23-install-fontawesome/): `rails generate boring:font_awesome:ruby_gem:install`
+- [Install FontAwesome via Yarn](https://www.boringgenerators.com/blog/2021-02-28-install-fontawesome-yarn/): `rails generate boring:font_awesome:yarn:install`
+- [Install GitHub Actions](https://www.boringgenerators.com/blog/2020-12-17-configure-github-actions/): `rails generate boring:ci:github_action:install --repository_name=<name> --ruby_version=<version>`
 - Install GraphQL: `rails generate boring:graphql:install`
 - Install JQuery: `rails generate boring:jquery:install`
+- Install Letter Opener: `rails generate boring:letter_opener:install`
 - Install Overcommit with RuboCop: `rails generate boring:overcommit:pre_commit:rubocop:install`
 - Install Paper Trail: `rails generate boring:paper_trail:install`
 - Install Pry gems for easy debugging: `rails generate boring:pry:install`
@@ -68,15 +75,10 @@ The boring generator introduces following generators:
 - Install SimpleForm: `rails generate boring:simple_form:install --css_framework=<css_framework>`
 - Install Stimulus: `rails generate boring:stimulus:install`
 - Install Stripe: `rails generate boring:payments:stripe:install`
+- [Install Tailwind CSS](https://www.boringgenerators.com/blog/2020-10-18-install-tailwind/): `rails generate boring:tailwind:install`
 - Install Travis CI: `rails generate boring:ci:travisci:install --ruby_version=<version>`
 - Install Twilio: `rails generate boring:twilio:install`
-- [Install Bootstrap](https://www.boringgenerators.com/blog/2020-11-15-install-bootstrap/): `rails generate boring:bootstrap:install`
-- [Install CircleCI](https://www.boringgenerators.com/blog/2021-01-02-configure-circleci/): `rails generate boring:ci:circleci:install --repository_name=<name> --ruby_version=<version>`
-- [Install Devise Facebook Omniauth](https://www.boringgenerators.com/blog/2021-02-07-install-oauth-facbook/): `rails generate boring:oauth:facebook:install`
-- [Install FontAwesome via RubyGems](https://www.boringgenerators.com/blog/2021-02-23-install-fontawesome/): `rails generate boring:font_awesome:ruby_gem:install`
-- [Install FontAwesome via Yarn](https://www.boringgenerators.com/blog/2021-02-28-install-fontawesome-yarn/): `rails generate boring:font_awesome:yarn:install`
-- [Install GitHub Actions](https://www.boringgenerators.com/blog/2020-12-17-configure-github-actions/): `rails generate boring:ci:github_action:install --repository_name=<name> --ruby_version=<version>`
-- [Install Tailwind CSS](https://www.boringgenerators.com/blog/2020-10-18-install-tailwind/): `rails generate boring:tailwind:install`
+- Install Whenever: `rails generate boring:whenever:install`
 
 ## Screencasts
 

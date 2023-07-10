@@ -9,7 +9,7 @@ module Boring
 
       class_option :rails_port,
                    type: :string,
-                   desc: "Tell us the port where your rails app is running on. Defaults to PORT #{DEFAULT_RAILS_PORT}",
+                   desc: "Tell us the port number where you normally run your rails app. Defaults to PORT #{DEFAULT_RAILS_PORT}",
                    default: DEFAULT_RAILS_PORT
 
       def verify_presence_of_rspec_gem
