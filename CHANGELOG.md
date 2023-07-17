@@ -4,6 +4,7 @@
 * Adds Letter Opener generator. ([@coolprobn][])
 * Adds Whenever generator. ([@aadil][])
 * Adds Rswag generator. ([@coolprobn][])
+* Adds Database Cleaner generator. ([@aadil][] and [@TheZero0-ctrl][])
 
 ## 0.12.0 (May 8th, 2023)
 * Adds Flipper generator. ([@abhaynikam][])
@@ -81,3 +82,4 @@
 [@luathn]: https://github.com/luathn
 [@coolprobn]: https://github.com/coolprobn
 [@aadil]: https://github.com/AdilRT
+[@TheZero0-ctrl]: https://github.com/TheZero0-ctrl
