@@ -79,6 +79,7 @@ The boring generator introduces following generators:
 - Install Letter Opener: `rails generate boring:letter_opener:install`
 - Install Whenever: `rails generate boring:whenever:install`
 - Install Rswag: `rails generate boring:rswag:install --rails_port=<rails_app_port> --authentication_type=<api_authentication_type> --skip_api_authentication=<skip_api_authentication> --api_authentication_options=<api_authentication_options> --enable_swagger_ui_authentication=<enable_swagger_ui_authentication> --swagger_ui_authentication_options=<swagger_ui_authentication_options>`
+- Install Database Cleaner with RSpec: `rails generate boring:database_cleaner:active_record:rspec:install`
 
 ## Screencasts
 
