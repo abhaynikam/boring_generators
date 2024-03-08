@@ -9,7 +9,7 @@ To start contributing to the package. We should follow following steps.
 - Fork the repository first to your GitHub account.
 - Install all package dependencies by executing `bundle install` in your console.
 - Add test cases for the changes made in the pull request. Make sure they are passing by running `rake test`.
-- Update documentation/README for the changes made if needed. Make sure to add new entries in alphabetical order.
+- Update documentation for the changes made if needed.
 - Add a changelog for the new feature or fixes.
 
 Push to your fork. Write a [good commit message][commit]. Submit a pull request.
