@@ -27,10 +27,6 @@ module Boring
                    type: :boolean,
                    desc: "Use this option with value 'true' for securing your API docs behind a basic authentication to block unauthorized access",
                    default: false
-      class_option :swagger_ui_authentication_options,
-                   type: :string,
-                   desc: "Use this option by passing username and password. It adds basic authentication to secure your API docs and blocks unauthorized access. Please note that username and password value you pass should either use ENV or Rails credentials for security purposes.",
-                   default: '{ "username": "ENV.fetch(\"SWAGGER_UI_LOGIN_USERNAME\", \"admin\")", "password": "Rails.application.credentials.dig(:swagger_ui, :password)" }'
 
       def verify_presence_of_rspec_gem
         gem_file_content_array = File.readlines("Gemfile")
@@ -136,19 +132,13 @@ module Boring
 
         say "\nAdding Basic Authentication to secure the UI", :green
 
-        ui_authentication_options = JSON.parse(options[:swagger_ui_authentication_options])
-
-        default_ui_authentication_options = '{ "username": "ENV.fetch(\"SWAGGER_UI_LOGIN_USERNAME\", \"admin\")", "password": "Rails.application.credentials.dig(:swagger_ui, :password)" }'
-
-        if ui_authentication_options == JSON.parse(default_ui_authentication_options)
-          say "❗️❗️\nusername will be used from `ENV.fetch('SWAGGER_UI_LOGIN_USERNAME', 'admin')` and password from `Rails.application.credentials.dig(:swagger_ui, :password)`. You can change these values if they don't match with your app.\n", :yellow
-        end
+        say "❗️❗️\nusername will be used from `ENV.fetch('SWAGGER_UI_LOGIN_USERNAME', 'admin')` and password from `Rails.application.credentials.dig(:swagger_ui, :password)`. You can change these values if they don't match with your app.\n", :yellow
 
         uncomment_lines 'config/initializers/rswag_ui.rb', /c.basic_auth_enabled/
         uncomment_lines 'config/initializers/rswag_ui.rb', /c.basic_auth_credentials/
         gsub_file "config/initializers/rswag_ui.rb",
                   "c.basic_auth_credentials 'username', 'password'",
-                  "c.basic_auth_credentials #{ui_authentication_options['username']}, #{ui_authentication_options['password']}"
+                  'c.basic_auth_credentials ENV.fetch("SWAGGER_UI_LOGIN_USERNAME", "admin"), Rails.application.credentials.dig(:swagger_ui, :password)'
       end
 
       def show_readme

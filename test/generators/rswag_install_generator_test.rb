@@ -101,13 +101,13 @@ class RswagInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       install_rspec
 
-      quietly { run_generator [destination_root, "--enable_swagger_ui_authentication=true", '--swagger_ui_authentication_options={ "username": "ENV.fetch(\"SWAGGER_UI_USERNAME\", \"admin\")", "password": "Rails.application.credentials.dig(:swagger_ui_test, :password)" }'] }
+      quietly { run_generator [destination_root, "--enable_swagger_ui_authentication=true"] }
 
       assert_file "config/initializers/rswag_ui.rb" do |content|
         refute_match(/# c.basic_auth_enabled/, content)
         assert_match(/c.basic_auth_enabled = true/, content)
         refute_match(/# c.basic_auth_credentials/, content)
-        assert_includes(content, 'c.basic_auth_credentials ENV.fetch("SWAGGER_UI_USERNAME", "admin"), Rails.application.credentials.dig(:swagger_ui_test, :password)')
+        assert_includes(content, 'c.basic_auth_credentials ENV.fetch("SWAGGER_UI_LOGIN_USERNAME", "admin"), Rails.application.credentials.dig(:swagger_ui, :password)')
       end
     end
   end
