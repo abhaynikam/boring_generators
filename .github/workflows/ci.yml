@@ -10,11 +10,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.0
+          ruby-version: 2.7.3
           bundler-cache: true
       - name: Install Imagemagick
         run: |
-          wget https://raw.githubusercontent.com/discourse/discourse_docker/master/image/base/install-imagemagick
+          wget https://raw.githubusercontent.com/discourse/discourse_docker/main/image/base/install-imagemagick
           chmod +x install-imagemagick
           sudo ./install-imagemagick
       - name: Install gems
