@@ -37,6 +37,10 @@ And then you can use it this way:
     $ boring generate boring:simple_form:install --css_framework=<css_framework>
     $ boring g boring:pry:install
 
+To see options provided by each generator with their descriptions and accepted values, you can hit the following command for example:
+
+    $ boring generate boring:simple_form:install --help
+
 ## Usage
 
 The boring generator introduces following generators:
@@ -78,7 +82,8 @@ The boring generator introduces following generators:
 - Install Overcommit with RuboCop: `rails generate boring:overcommit:pre_commit:rubocop:install`
 - Install Letter Opener: `rails generate boring:letter_opener:install`
 - Install Whenever: `rails generate boring:whenever:install`
-- Install Rswag: `rails generate boring:rswag:install --rails_port=<rails_app_port> --authentication_type=<api_authentication_type> --skip_api_authentication=<skip_api_authentication> --api_authentication_options=<api_authentication_options> --enable_swagger_ui_authentication=<enable_swagger_ui_authentication> --swagger_ui_authentication_options=<swagger_ui_authentication_options>`
+- Install Rswag: `rails generate boring:rswag:install --rails_port=<rails_app_port> --authentication_type=<api_authentication_type> --skip_api_authentication=<skip_api_authentication> --api_authentication_options=<api_authentication_options> --enable_swagger_ui_authentication=<enable_swagger_ui_authentication>`
+- Install Webmock: `rails generate boring:webmock:install --app_test_framework=<test_framework>`
 
 ## Screencasts
 
