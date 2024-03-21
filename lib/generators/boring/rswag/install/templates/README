@@ -1,0 +1,10 @@
+===============================================================================
+
+To get up and running with rswag you can do the following next:
+
+1. Write a rswag spec by following instructions from Getting Started guide at https://github.com/rswag/rswag#getting-started
+2. Once the spec is ready, generate the swagger file with `rails rswag`
+3. Run the rails server with `rails s`
+4. Assuming your app is at "localhost:3000", you will find your API docs at `http://localhost:3000/api-docs/index.html`
+
+===============================================================================

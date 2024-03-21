@@ -40,6 +40,7 @@ And then you can use it this way:
 ## Usage
 
 The boring generator introduces following generators:
+
 - [Install Tailwind CSS](https://www.boringgenerators.com/blog/2020-10-18-install-tailwind/): `rails generate boring:tailwind:install`
 - [Install Bootstrap](https://www.boringgenerators.com/blog/2020-11-15-install-bootstrap/): `rails generate boring:bootstrap:install`
 - Install JQuery: `rails generate boring:jquery:install`
@@ -77,6 +78,7 @@ The boring generator introduces following generators:
 - Install Overcommit with RuboCop: `rails generate boring:overcommit:pre_commit:rubocop:install`
 - Install Letter Opener: `rails generate boring:letter_opener:install`
 - Install Whenever: `rails generate boring:whenever:install`
+- Install Rswag: `rails generate boring:rswag:install --rails_port=<rails_app_port> --authentication_type=<api_authentication_type> --skip_api_authentication=<skip_api_authentication> --api_authentication_options=<api_authentication_options> --enable_swagger_ui_authentication=<enable_swagger_ui_authentication> --swagger_ui_authentication_options=<swagger_ui_authentication_options>`
 
 ## Screencasts
 
