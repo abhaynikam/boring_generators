@@ -87,7 +87,7 @@ class RswagInstallGeneratorTest < Rails::Generators::TestCase
     Dir.chdir(app_path) do
       install_rspec
 
-      quietly { run_generator [destination_root, "--authentication_type=api_key", '--api_authentication_options={ "name": "api_key", "in": "query" }'] }
+      quietly { run_generator [destination_root, "--authentication_type=api_key", "--api_authentication_options=name:api_key", "in:query"] }
 
       assert_file "spec/swagger_helper.rb" do |content|
         assert_match(/type: :apiKey/, content)
@@ -107,7 +107,7 @@ class RswagInstallGeneratorTest < Rails::Generators::TestCase
         refute_match(/# c.basic_auth_enabled/, content)
         assert_match(/c.basic_auth_enabled = true/, content)
         refute_match(/# c.basic_auth_credentials/, content)
-        assert_includes(content, 'c.basic_auth_credentials ENV.fetch("SWAGGER_UI_LOGIN_USERNAME", "admin"), Rails.application.credentials.dig(:swagger_ui, :password)')
+        assert_includes(content, 'c.basic_auth_credentials Rails.application.credentials.dig(:swagger_ui, :username), Rails.application.credentials.dig(:swagger_ui, :password)')
       end
     end
   end

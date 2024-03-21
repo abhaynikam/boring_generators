@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-
 module Boring
   module Rswag
     class InstallGenerator < Rails::Generators::Base
@@ -21,8 +19,8 @@ module Boring
                    desc: "Use this option with value 'true' if you don't want to add Authentication when making API calls via swagger docs.",
                    default: false
       class_option :api_authentication_options,
-                   type: :string,
-                   desc: 'Use together with authentication_type. Required for "api_key" authentication which has dynamic set of options. See: https://swagger.io/docs/specification/authentication. Example: "{ "name": "api_key", "in": "header" }"'
+                   type: :hash,
+                   desc: 'Use together with authentication_type. Required for "api_key" authentication which has dynamic set of options. See: https://swagger.io/docs/specification/authentication. Example: "--api_authentication_options=name:api_key in:header"'
       class_option :enable_swagger_ui_authentication,
                    type: :boolean,
                    desc: "Use this option with value 'true' for securing your API docs behind a basic authentication to block unauthorized access",
@@ -85,7 +83,7 @@ module Boring
         if authentication_type == 'api_key'
           validate_api_authentication_options
 
-          authentication_options = JSON.parse(options[:api_authentication_options])
+          authentication_options = options[:api_authentication_options]
         end
 
         authentication_content = case authentication_type
@@ -126,19 +124,17 @@ module Boring
       end
 
       def enable_swagger_ui_authentication
-        unless options[:enable_swagger_ui_authentication]
-          return
-        end
+        return unless options[:enable_swagger_ui_authentication]
 
         say "\nAdding Basic Authentication to secure the UI", :green
-
-        say "❗️❗️\nusername will be used from `ENV.fetch('SWAGGER_UI_LOGIN_USERNAME', 'admin')` and password from `Rails.application.credentials.dig(:swagger_ui, :password)`. You can change these values if they don't match with your app.\n", :yellow
 
         uncomment_lines 'config/initializers/rswag_ui.rb', /c.basic_auth_enabled/
         uncomment_lines 'config/initializers/rswag_ui.rb', /c.basic_auth_credentials/
         gsub_file "config/initializers/rswag_ui.rb",
                   "c.basic_auth_credentials 'username', 'password'",
-                  'c.basic_auth_credentials ENV.fetch("SWAGGER_UI_LOGIN_USERNAME", "admin"), Rails.application.credentials.dig(:swagger_ui, :password)'
+                  'c.basic_auth_credentials Rails.application.credentials.dig(:swagger_ui, :username), Rails.application.credentials.dig(:swagger_ui, :password)'
+
+        say "❗️❗️\nusername will be used from `Rails.application.credentials.dig(:swagger_ui, :username)` and password from `Rails.application.credentials.dig(:swagger_ui, :password)`. You can change these values if they don't match with your app.\n", :yellow
       end
 
       def show_readme
@@ -148,7 +144,7 @@ module Boring
       private
 
       def validate_api_authentication_options
-        api_authentication_options = JSON.parse(options[:api_authentication_options])
+        api_authentication_options = options[:api_authentication_options]
 
         if api_authentication_options.blank?
           say "api_authentication_options args should be provided for api_key authentication", :red
@@ -157,11 +153,10 @@ module Boring
         end
 
         missing_options = %w[name in] - api_authentication_options.keys
-        example_valid_options = { name: 'api_key', in: 'query' }
 
         if missing_options.length.positive?
-          say "Option/s '#{missing_options.to_sentence}' should be present for api_key authentication!", :red
-          say "Below is the one example of valid api_authentication_options:\n\n#{example_valid_options}"
+          say "Option/s '#{missing_options.join(', ')}' should be present for api_key authentication!", :red
+          say 'Example of valid options: "--api_authentication_options=name:api_key in:query"', :yellow
 
           abort
         end
