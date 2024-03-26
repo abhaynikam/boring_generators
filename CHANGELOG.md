@@ -1,6 +1,8 @@
 # Changelog
 
 ## master (unreleased)
+
+## 0.13.0 (March 26th, 2024)
 * Adds Letter Opener generator. ([@coolprobn][])
 * Adds Whenever generator. ([@aadil][])
 * Adds Rswag generator. ([@coolprobn][])
