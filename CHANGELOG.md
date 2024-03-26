@@ -4,6 +4,7 @@
 * Adds Letter Opener generator. ([@coolprobn][])
 * Adds Whenever generator. ([@aadil][])
 * Adds Rswag generator. ([@coolprobn][])
+* Adds Webmock generator. ([@aadil][])
 
 ## 0.12.0 (May 8th, 2023)
 * Adds Flipper generator. ([@abhaynikam][])
