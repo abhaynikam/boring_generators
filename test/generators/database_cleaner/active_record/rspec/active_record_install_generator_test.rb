@@ -49,22 +49,18 @@ class DatabaseCleanerActiveRecordInstallGeneratorTest < Rails::Generators::TestC
 
       assert_file 'spec/rails_helper.rb' do |content|
         assert_match(/require 'support\/database_cleaner'/, content)
-        assert_match(/config\.use_transactional_fixtures = false/, content)
       end
     end
   end
 
-  def test_should_skip_capybara_configs
-    database_cleaner_template_content = read_database_cleaner_template(skip_capybara_configs: true)
+  def test_should_skip_js_configs
+    database_cleaner_template_content = read_database_cleaner_template(skip_js_configs: true)
     Dir.chdir(app_path) do
       configure_rspec
 
-      quietly { run_generator [destination_root, "--skip_capybara_configs"] }
+      quietly { run_generator [destination_root, "--skip_js_configs"] }
       database_cleaner_content = File.read('spec/support/database_cleaner.rb')
       assert_equal database_cleaner_template_content, database_cleaner_content
-      assert_file 'spec/rails_helper.rb' do |content|
-        assert_match(/config\.use_transactional_fixtures = true/, content)
-      end
     end
   end
 
@@ -89,8 +85,8 @@ class DatabaseCleanerActiveRecordInstallGeneratorTest < Rails::Generators::TestC
     File.write("#{app_path}/spec/rails_helper.rb", content)
   end
 
-  def read_database_cleaner_template(skip_capybara_configs: false)
-    @skip_capybara_configs = skip_capybara_configs
+  def read_database_cleaner_template(skip_js_configs: false)
+    @skip_js_configs = skip_js_configs
     template_path = File.join(
       GEM_ROOT,
       "lib/generators/boring/database_cleaner/active_record/rspec/install/templates/database_cleaner.rb.tt"

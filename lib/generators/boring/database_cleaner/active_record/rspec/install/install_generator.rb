@@ -10,9 +10,9 @@ module Boring
 
           TEST_FRAMEWORK_GEM = 'rspec-rails'
 
-          class_option :skip_capybara_configs, type: :boolean,
-                                               aliases: "-sc",
-                                               desc: "Skip Capybara config"
+          class_option :skip_js_configs, type: :boolean,
+                                               aliases: "-sj",
+                                               desc: "Skip JacaScript dependent configurations"
 
           def verify_presence_of_rspec_gem
             gem_file_content_array = File.readlines("Gemfile")
@@ -42,30 +42,14 @@ module Boring
           end
 
           def configure_database_cleaner
-            @skip_capybara_configs = options[:skip_capybara_configs]
-
-            unless @skip_capybara_configs
-              rails_helper_content = File.read("spec/rails_helper.rb")
-              if rails_helper_content.match?(/config.use_transactional_fixtures = true/)
-                disable_transactional_fixtures
-              end
-            end
+            say 'Configuring database_cleaner', :green
+            @skip_js_configs = options[:skip_js_configs]
 
             template("database_cleaner.rb", "spec/support/database_cleaner.rb")
 
             inject_into_file 'spec/rails_helper.rb',
                              "require 'support/database_cleaner'\n\n",
                              before: /\A/
-          end
-
-          private
-
-          def disable_transactional_fixtures
-            say "Disabling transactional fixtures to prevent uncommitted transactions being used in JavaScript-dependent specs.", :yellow
-            gsub_file "spec/rails_helper.rb",
-                      "config.use_transactional_fixtures = true",
-                      "config.use_transactional_fixtures = false"
-
           end
         end
       end

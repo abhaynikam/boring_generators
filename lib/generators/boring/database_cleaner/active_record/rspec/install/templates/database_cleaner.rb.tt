@@ -8,18 +8,13 @@ RSpec.configure do |config|
   config.before do
     DatabaseCleaner.strategy = :transaction
   end
-<% unless @skip_capybara_configs %>
-  config.before(:each, type: :system) do
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
-    DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
+
+<%- unless @skip_js_configs -%>
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each, type: :feature) do
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
-    DatabaseCleaner.strategy = :truncation unless driver_shares_db_connection_with_specs
-  end
-
-<% end -%>
+<%- end -%>
   config.before do
     DatabaseCleaner.start
   end
