@@ -25,6 +25,7 @@ module BoringGenerators
 
       gem_file_content_array = File.readlines("Gemfile")
 
+  
       gem_exists = gem_file_content_array.any? { |line| line.include?(gem_name) }
 
       if gem_exists
