@@ -1,0 +1,6 @@
+---
+:skip_files:
+- test/
+:output_files:
+- reports/brakeman.json
+- reports/brakeman.html

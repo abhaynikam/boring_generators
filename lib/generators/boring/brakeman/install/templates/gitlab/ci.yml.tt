@@ -1,0 +1,10 @@
+stages:
+  - scan
+
+scan:
+  stage: scan
+  image: <%= @ruby_version %>
+  script:
+    - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)" --no-document
+    - bundle install --jobs $(nproc)
+    - bundle exec brakeman

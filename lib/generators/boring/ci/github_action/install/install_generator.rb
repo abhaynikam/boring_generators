@@ -5,7 +5,7 @@ module Boring
     module GithubAction
       class InstallGenerator < Rails::Generators::Base
         desc "Adds Github Action to the application"
-        source_root File.expand_path("templates", __dir__)
+        e_root File.expand_path("templates", __dir__)sourc
 
         RUBY_VERSION_FILE = ".ruby-version"
 
