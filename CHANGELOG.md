@@ -5,6 +5,7 @@
 * Adds Rack Mini Profiler generator. ([@mausamp][])
 * Adds VCR generator. ([@TheZero0-ctrl][])
 * Adds Doorkeeper Generator with Devise. ([@TheZero0-ctrl][])
+* Adds Pronto Generator with Gihub Action. ([@TheZero0-ctrl][])
 
 ## 0.13.0 (March 26th, 2024)
 * Adds Letter Opener generator. ([@coolprobn][])

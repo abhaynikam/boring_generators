@@ -15,7 +15,6 @@
   Check out the generator we support right now. We are planning to add support to most of the mostly used and required gems. We are open to any idea of yours, feel free to raise a discussion by opening up an issue or try contributing.
 </p>
 
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -88,6 +87,7 @@ The boring generator introduces following generators:
 - Install Rack Mini Profiler: `rails generate boring:rack_mini_profiler:install`
 - Install VCR: `rails generate boring:vcr:install --testing_framework=<testing_framework> --stubbing_libraries=<stubbing_libraries>`
 - Install Doorkeeper with devise: `rails generate boring:devise:doorkeeper:install`
+- Install Pronto with Github Action: `rails generate boring:pronto:github_action:install`
 
 ## Screencasts
 
@@ -98,6 +98,7 @@ The boring generator introduces following generators:
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 You can also run specific test cases using following commands:
+
 ```
 bundle exec ruby -w -Itest test/generators/tailwind_install_generator_test.rb
 ```
