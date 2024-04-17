@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds Figjam generator. ([@mausamp][])
 
 ## 0.13.0 (March 26th, 2024)
 * Adds Letter Opener generator. ([@coolprobn][])
@@ -84,3 +85,4 @@
 [@luathn]: https://github.com/luathn
 [@coolprobn]: https://github.com/coolprobn
 [@aadil]: https://github.com/AdilRT
+[@mausamp]: https://github.com/mausamp
