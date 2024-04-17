@@ -10,6 +10,7 @@
 * Adds Avo generator. ([@mausamp][])
 * Adds Sentry generator. ([@mausamp][])
 * Adds Dotenv generator. ([@mausamp][])
+* Adds Honeybadger generator. ([@mausamp][])
 
 ## 0.13.0 (March 26th, 2024)
 * Adds Letter Opener generator. ([@coolprobn][])
