@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds Sidekiq generator. ([@TheZero0-ctrl][])
 
 ## 0.14.0 (Aug 4th, 2024)
 
