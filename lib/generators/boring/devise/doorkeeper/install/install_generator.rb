@@ -24,7 +24,8 @@ module Boring
 
           return if devise_is_installed
 
-          say "We couldn't find devise gem. Please configure devise gem and run the generator again!", :red
+          say "We couldn't find devise gem. Please configure devise gem and rerun the generator. Consider running `rails generate boring:devise:install` to set up Devise.",
+              :red
 
           abort
         end
@@ -40,7 +41,9 @@ module Boring
 
         def add_doorkeeper_gem
           say "Adding doorkeeper gem", :green
-          gem "doorkeeper"
+          Bundler.with_unbundled_env do
+            run "bundle add doorkeeper"
+          end
         end
 
         def run_doorkeeper_generators
