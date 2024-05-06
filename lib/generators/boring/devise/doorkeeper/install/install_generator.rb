@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
+require 'boring_generators/generator_helper'
+
 module Boring
   module Devise
     module Doorkeeper
       class InstallGenerator < Rails::Generators::Base
+        include BoringGenerators::GeneratorHelper
+
         desc "Adds doorkeeper with devise to the application"
 
         class_option :model_name, type: :string, aliases: "-m", default: "User",
@@ -19,12 +23,10 @@ module Boring
                      desc: "Keep user logged in with refresh tokens. Defaults to false"
 
         def verify_presence_of_devise_gem
-          gem_file_content_array = File.readlines("Gemfile")
-          devise_is_installed = gem_file_content_array.any? { |line| line.include?('devise') }
+          return if gem_installed?("devise")
 
-          return if devise_is_installed
-
-          say "We couldn't find devise gem. Please configure devise gem and run the generator again!", :red
+          say "We couldn't find devise gem. Please configure devise gem and rerun the generator. Consider running `rails generate boring:devise:install` to set up Devise.",
+              :red
 
           abort
         end
@@ -40,7 +42,8 @@ module Boring
 
         def add_doorkeeper_gem
           say "Adding doorkeeper gem", :green
-          gem "doorkeeper"
+          check_and_install_gem("doorkeeper")
+          bundle_install
         end
 
         def run_doorkeeper_generators
