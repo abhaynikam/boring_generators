@@ -96,6 +96,7 @@ The boring generator introduces following generators:
 - Install Honeybadger: `rails generate boring:honeybadger:install`
 - Install Rails ERD: `rails generate boring:rails_erd:install`
 - Install Annotate: `rails generate boring:annotate:install`
+- Install CanCanCan: `rails generate boring:cancancan:install`
 
 ## Screencasts
 
