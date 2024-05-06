@@ -13,7 +13,7 @@ module Boring
             \n
             \t# Patch-level verification for Bundler. https://github.com/rubysec/bundler-audit
             \tgem "bundler-audit", require: false
-            \t# vulnerabity checker for Ruby itself. https://github.com/civisanalytics/ruby_audit
+            \t# vulnerability checker for Ruby itself. https://github.com/civisanalytics/ruby_audit
             \tgem "ruby_audit", require: false
           RUBY
           insert_into_file "Gemfile", audit_gems_content, after: /group :development do/

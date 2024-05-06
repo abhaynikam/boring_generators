@@ -2,7 +2,7 @@ module Boring
   module ActiveStorage
     module Azure
       class InstallGenerator < Rails::Generators::Base
-        desc "Adds ActiveStorage Mircosoft Azure the application"
+        desc "Adds ActiveStorage Microsoft Azure the application"
 
         class_option :skip_active_storage, type: :boolean, aliases: "-s",
                                            desc: "Skips running ActiveStorage installer"
