@@ -14,7 +14,7 @@ module Boring
       def add_factory_bot_gem
         log :adding, "FactoryBot"
         Bundler.with_unbundled_env do
-          run "bundle add factory_bot_rails --group='developement,test'"
+          run "bundle add factory_bot_rails --group='development,test'"
         end
       end
 
