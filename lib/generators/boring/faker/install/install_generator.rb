@@ -9,7 +9,7 @@ module Boring
       def add_faker_gem
         log :adding, "faker"
         Bundler.with_unbundled_env do
-          run "bundle add faker --group='developement,test'"
+          run "bundle add faker --group='development,test'"
         end
       end
     end
