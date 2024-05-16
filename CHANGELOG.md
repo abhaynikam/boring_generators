@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds Pronto Generator with Gitlab CI ([@coolprobn][])
 * Adds Rack Mini Profiler generator. ([@mausamp][])
 
 ## 0.13.0 (March 26th, 2024)
