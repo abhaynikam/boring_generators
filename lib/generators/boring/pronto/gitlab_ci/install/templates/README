@@ -1,0 +1,7 @@
+
+===============================================================================
+
+❗️❗️
+Pronto needs your Private Gitlab API token for posting comments in the merge request. It is configured as "PRONTO_ACCESS_TOKEN" inside .gitlab-ci.yml, don't forget to configure this variable in your Gitlab Project settings before pushing your new changes to git.
+
+===============================================================================
