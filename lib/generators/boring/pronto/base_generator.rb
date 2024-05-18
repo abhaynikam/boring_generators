@@ -7,61 +7,40 @@ module Boring
     class BaseGenerator < Rails::Generators::Base
       desc "Adds Pronto gem with various extensions"
 
-      class_option :extensions_to_skip,
-       type: :array,
-        aliases: "-se",
-        desc: "Skip one or list of extensions. Example usage `--extensions_to_skip=rubocop flay`",
-        enum: %w[brakeman flay reek rubocop],
-        default: []
+      class_option :skip_extensions, type: :array, aliases: "-se",
+                   desc: "List of extensions to skip. Available options: brakeman, flay, reek, rubocop",
+                   enum: %w[brakeman flay reek rubocop],
+                   default: []
 
       include BoringGenerators::GeneratorHelper
 
-      def add_pronto_gem
-        say "Adding pronto gem", :green
-
+      def add_pronto_gems
+        say "Adding pronto gems", :green
+        pronto_gem_content = <<~RUBY
+          \n
+          \t# Pronto is a code linter runner that can be used with git and GitHub pull requests
+          \tgem "pronto"
+          #{pronto_brakemen_gem_content}
+          #{pronto_flay_gem_content}
+        RUBY
+        insert_into_file "Gemfile", pronto_gem_content
         Bundler.with_unbundled_env do
-          check_and_install_gem "pronto"
+          run "bundle install"
         end
       end
 
-      def add_brakeman_extension
-        return if options[:extensions_to_skip].include?('brakeman')
+      def pronto_brakemen_gem_content
+        return unless options[:skip_extensions].exclude?('brakeman')
+        return if gem_installed?('pronto-brakeman')
 
-        say "Adding extension for brakeman", :green
-
-        Bundler.with_unbundled_env do
-          check_and_install_gem "pronto-brakeman", require: false
-        end
+        "\tgem \"pronto-brakeman\", require: false"
       end
 
-      def add_flay_extension
-        return if options[:extensions_to_skip].include?('flay')
+      def pronto_flay_gem_content
+        return unless options[:skip_extensions].exclude?('flay')
+        return if gem_installed?('pronto-flay')
 
-        say "Adding extension for flay", :green
-
-        Bundler.with_unbundled_env do
-          check_and_install_gem "pronto-flay", require: false
-        end
-      end
-
-      def add_reek_extension
-        return if options[:extensions_to_skip].include?('reek')
-
-        say "Adding extension for reek", :green
-
-        Bundler.with_unbundled_env do
-          check_and_install_gem "pronto-reek", require: false
-        end
-      end
-
-      def add_rubocop_extension
-        return if options[:extensions_to_skip].include?('rubocop')
-
-        say "Adding extension for rubocop", :green
-
-        Bundler.with_unbundled_env do
-          check_and_install_gem "pronto-rubocop", require: false
-        end
+        "\tgem \"pronto-flay\", require: false"
       end
     end
   end
