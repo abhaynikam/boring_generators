@@ -86,6 +86,7 @@ The boring generator introduces following generators:
 - Install Webmock: `rails generate boring:webmock:install --app_test_framework=<test_framework>`
 - Install Pronto with Gitlab CI: `rails generate boring:pronto:gitlab_ci:install`
 - Install Rack Mini Profiler: `rails generate boring:rack_mini_profiler:install`
+- Install VCR: `rails generate boring:vcr:install --testing_framework=<testing_framework> --stubbing_libraries=<stubbing_libraries>`
 
 ## Screencasts
 
