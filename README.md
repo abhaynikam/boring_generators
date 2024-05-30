@@ -85,6 +85,11 @@ The boring generator introduces following generators:
 - Install Rswag: `rails generate boring:rswag:install --rails_port=<rails_app_port> --authentication_type=<api_authentication_type> --skip_api_authentication=<skip_api_authentication> --api_authentication_options=<api_authentication_options> --enable_swagger_ui_authentication=<enable_swagger_ui_authentication>`
 - Install Webmock: `rails generate boring:webmock:install --app_test_framework=<test_framework>`
 - Install Figjam: `rails generate boring:figjam:install`
+- Install Pronto with Gitlab CI: `rails generate boring:pronto:gitlab_ci:install`
+- Install Rack Mini Profiler: `rails generate boring:rack_mini_profiler:install`
+- Install VCR: `rails generate boring:vcr:install --testing_framework=<testing_framework> --stubbing_libraries=<stubbing_libraries>`
+- Install Pronto with Github Action: `rails generate boring:pronto:github_action:install`
+- Install Doorkeeper with devise: `rails generate boring:devise:doorkeeper:install`
 
 ## Screencasts
 

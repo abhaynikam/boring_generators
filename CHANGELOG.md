@@ -2,6 +2,11 @@
 
 ## master (unreleased)
 * Adds Figjam generator. ([@mausamp][])
+* Adds Pronto Generator with Gitlab CI ([@coolprobn][])
+* Adds Rack Mini Profiler generator. ([@mausamp][])
+* Adds VCR generator. ([@TheZero0-ctrl][])
+* Adds Pronto Generator with Gihub Action. ([@TheZero0-ctrl][])
+* Adds Doorkeeper Generator with Devise. ([@TheZero0-ctrl][])
 
 ## 0.13.0 (March 26th, 2024)
 * Adds Letter Opener generator. ([@coolprobn][])
@@ -86,3 +91,4 @@
 [@coolprobn]: https://github.com/coolprobn
 [@aadil]: https://github.com/AdilRT
 [@mausamp]: https://github.com/mausamp
+[@TheZero0-ctrl]: https://github.com/TheZero0-ctrl

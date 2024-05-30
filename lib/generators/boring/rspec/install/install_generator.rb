@@ -14,7 +14,7 @@ module Boring
       def add_rspec_gem
         log :adding, "rspec-rails"
         Bundler.with_unbundled_env do
-          run "bundle add rspec-rails --group='developement,test'"
+          run "bundle add rspec-rails --group='development,test'"
         end
       end
 

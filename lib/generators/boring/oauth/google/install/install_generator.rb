@@ -14,8 +14,8 @@ module Boring
         desc "Adds Google OmniAuth to the application"
         source_root File.expand_path("templates", __dir__)
 
-        def add_github_omniauth_gem
-          say "Adding GitHub OmniAuth gem", :green
+        def add_google_omniauth_gem
+          say "Adding Google OmniAuth gem", :green
           Bundler.with_unbundled_env do
             run "bundle add omniauth-google-oauth2"
           end
