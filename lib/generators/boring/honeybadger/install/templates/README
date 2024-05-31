@@ -1,0 +1,6 @@
+===============================================================================
+
+The API key for Honeybadger will be used from <%= @api_key %>.
+You can change these values if they don't match with your app.
+
+===============================================================================

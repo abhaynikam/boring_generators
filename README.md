@@ -93,6 +93,7 @@ The boring generator introduces following generators:
 - Install Doorkeeper with devise: `rails generate boring:devise:doorkeeper:install`
 - Install Sentry: `rails generate boring:sentry:install --use_env_variable --breadcrumbs_logger=<breadcrumbs_logger_options>`
 - Install Dotenv: `rails generate boring:dotenv:install`
+- Install Honeybadger: `rails generate boring:honeybadger:install`
 
 ## Screencasts
 
