@@ -90,6 +90,7 @@ The boring generator introduces following generators:
 - Install VCR: `rails generate boring:vcr:install --testing_framework=<testing_framework> --stubbing_libraries=<stubbing_libraries>`
 - Install Avo: `rails generate boring:avo:install`
 - Install Doorkeeper with devise: `rails generate boring:devise:doorkeeper:install`
+- Install Sentry: `rails generate boring:sentry:install --use_env_variable --breadcrumbs_logger=<breadcrumbs_logger_options>`
 
 ## Screencasts
 
