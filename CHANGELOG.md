@@ -1,6 +1,7 @@
 # Changelog
 
 ## master (unreleased)
+* Adds Figjam generator. ([@mausamp][])
 * Adds Pronto Generator with Gitlab CI ([@coolprobn][])
 * Adds Rack Mini Profiler generator. ([@mausamp][])
 * Adds VCR generator. ([@TheZero0-ctrl][])
