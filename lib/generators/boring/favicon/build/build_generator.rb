@@ -39,7 +39,7 @@ module Boring
       end
 
       def create_favicon_directory
-        unless File.exists?(FILE_FAVICO_DIR)
+        unless File.exist?(FILE_FAVICO_DIR)
           Dir.mkdir FILE_FAVICO_DIR
         end
       end

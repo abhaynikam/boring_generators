@@ -28,7 +28,8 @@ class DotenvInstallGeneratorTest < Rails::Generators::TestCase
       assert_file '.env.sample'
 
       assert_file '.gitignore' do |content|
-        assert_match(/.env/, content)
+        assert_match(/\/.env*/, content)
+        assert_match(/!\/.env.*/, content)
       end
     end
   end
