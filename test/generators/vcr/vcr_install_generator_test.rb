@@ -15,35 +15,30 @@ class VcrInstallGeneratorTest < Rails::Generators::TestCase
     app_path
   end
 
+  def test_should_exit_if_test_helper_is_not_present
+    Dir.chdir(app_path) do
+      `mv test/test_helper.rb test/test_helper.bak`
+
+      assert_raises SystemExit do
+        quietly { run_generator }
+      end
+
+      `mv test/test_helper.bak test/test_helper.rb`
+    end
+  end
+
   def test_should_exit_if_rails_helper_is_not_present
     assert_raises SystemExit do
-      quietly { run_generator }
+      quietly { run_generator %w[--testing_framework=rspec] }
     end
   end
 
   def test_should_configure_vcr
     Dir.chdir(app_path) do
-      configure_rspec
       quietly { run_generator }
 
       assert_gem "vcr"
       assert_gem "webmock"
-      assert_file "spec/support/vcr.rb" do |content|
-        assert_match(/require "vcr"/, content)
-        assert_match(/VCR.configure do |c|/, content)
-        assert_match(/c.hook_into :webmock/, content)
-        assert_match(/c.configure_rspec_metadata!/, content)
-      end
-
-      assert_file 'spec/rails_helper.rb' do |content|
-        assert_match(/require 'support\/vcr'/, content)
-      end
-    end
-  end
-
-  def test_should_configure_vcr_for_minitest
-    Dir.chdir(app_path) do
-      quietly { run_generator %w[--testing_framework=minitest] }
 
       assert_file "test/test_helper.rb" do |content|
         assert_match(/require "vcr"/, content)
@@ -54,15 +49,32 @@ class VcrInstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  def test_should_configure_vcr_with_correct_stubbing_libraries
+  def test_should_configure_vcr_for_rspec
     Dir.chdir(app_path) do
       configure_rspec
+      quietly { run_generator %w[--testing_framework=rspec] }
+
+      assert_file "spec/support/vcr.rb" do |content|
+        assert_match(/require "vcr"/, content)
+        assert_match(/VCR.configure do |c|/, content)
+        assert_match(/c.hook_into :webmock/, content)
+        assert_match(/c.configure_rspec_metadata!/, content)
+      end
+
+      assert_file "spec/rails_helper.rb" do |content|
+        assert_match(%r{require 'support/vcr'}, content)
+      end
+    end
+  end
+
+  def test_should_configure_vcr_with_correct_stubbing_libraries
+    Dir.chdir(app_path) do
       quietly { run_generator %w[--stubbing_libraries=webmock typhoeus] }
 
       assert_gem "webmock"
       assert_gem "typhoeus"
 
-      assert_file "spec/support/vcr.rb" do |content|
+      assert_file "test/test_helper.rb" do |content|
         assert_match(/c.hook_into :webmock, :typhoeus/, content)
       end
     end
