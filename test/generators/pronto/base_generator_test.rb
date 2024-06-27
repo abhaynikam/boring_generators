@@ -31,47 +31,55 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_brakeman_extension
     Dir.chdir(app_path) do
-      quietly do
-        generator({}, ['--extensions_to_skip=brakeman']).add_brakeman_extension
-      end
+      run_generator([destination_root, '--skip_extensions=brakeman'])
 
       assert_file "Gemfile" do |content|
+        assert_match("pronto", content)
         refute_match("pronto-brakeman", content)
+        assert_match("pronto-flay", content)
+        assert_match("pronto-reek", content)
+        assert_match("pronto-rubocop", content)
       end
     end
   end
 
   def test_should_skip_flay_extension
     Dir.chdir(app_path) do
-      quietly do
-        generator({}, ['--extensions_to_skip=flay']).add_flay_extension
-      end
+      quietly { run_generator([destination_root, '--skip_extensions=flay'])  }
 
       assert_file "Gemfile" do |content|
+        assert_match("pronto", content)
+        assert_match("pronto-brakeman", content)
         refute_match("pronto-flay", content)
+        assert_match("pronto-reek", content)
+        assert_match("pronto-rubocop", content)
       end
     end
   end
 
   def test_should_skip_reek_extension
     Dir.chdir(app_path) do
-      quietly do
-        generator({}, ['--extensions_to_skip=reek']).add_reek_extension
-      end
+      quietly { run_generator([destination_root, '--skip_extensions=reek'])  }
 
       assert_file "Gemfile" do |content|
+        assert_match("pronto", content)
+        assert_match("pronto-brakeman", content)
+        assert_match("pronto-flay", content)
         refute_match("pronto-reek", content)
+        assert_match("pronto-rubocop", content)
       end
     end
   end
 
   def test_should_skip_rubocop_extension
     Dir.chdir(app_path) do
-      quietly do
-        generator({}, ['--extensions_to_skip=rubocop']).add_rubocop_extension
-      end
+      quietly { run_generator([destination_root, '--skip_extensions=rubocop'])  }
 
       assert_file "Gemfile" do |content|
+        assert_match("pronto", content)
+        assert_match("pronto-brakeman", content)
+        assert_match("pronto-flay", content)
+        assert_match("pronto-reek", content)
         refute_match("pronto-rubocop", content)
       end
     end
@@ -79,11 +87,12 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_multiple_extensions
     Dir.chdir(app_path) do
-      quietly do
-        generator({}, ['--extensions_to_skip=reek', 'rubocop']).add_rubocop_extension
-      end
+      quietly { run_generator([destination_root, '--skip_extensions=reek', 'rubocop'])  }
 
       assert_file "Gemfile" do |content|
+        assert_match("pronto", content)
+        assert_match("pronto-brakeman", content)
+        assert_match("pronto-flay", content)
         refute_match("pronto-reek", content)
         refute_match("pronto-rubocop", content)
       end

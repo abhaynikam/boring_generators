@@ -13,6 +13,9 @@ module Boring
                    desc: "Skip generating devise views"
       class_option :skip_devise_model, type: :boolean, aliases: "-sm",
                    desc: "Skip generating devise model"
+      class_option :run_db_migrate, type: :boolean, aliases: "-rdm",
+                   desc: "Run migrations after generating user table",
+                   default: false
 
       def add_devise_gem
         say "Adding devise gem", :green
@@ -62,6 +65,14 @@ module Boring
 
         Bundler.with_unbundled_env do
           run "DISABLE_SPRING=1 bundle exec rails generate devise:views #{model_name.pluralize}"
+        end
+      end
+
+      def run_db_migrate
+        return unless options[:run_db_migrate]
+
+        Bundler.with_unbundled_env do
+          rails_command "db:migrate"
         end
       end
     end

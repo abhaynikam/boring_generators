@@ -42,8 +42,8 @@ module Boring
 
         def add_doorkeeper_gem
           say "Adding doorkeeper gem", :green
-          check_and_install_gem("doorkeeper")
-          bundle_install
+          
+          check_and_install_gem "doorkeeper"
         end
 
         def run_doorkeeper_generators

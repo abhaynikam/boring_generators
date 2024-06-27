@@ -101,4 +101,30 @@ class DeviseInstallGeneratorTest < Rails::Generators::TestCase
       assert_file "app/views/users/mailer/unlock_instructions.html.erb"
     end
   end
+
+  def test_should_run_db_migrate
+    Dir.chdir(app_path) do
+      `rails db:migrate`
+
+      generator = generator({}, ['--run_db_migrate=true'])
+
+      quietly do
+        generator.add_devise_gem
+        generator.generating_devise_defaults
+        generator.add_devise_user_model
+      end
+
+      pending_migrations = `rails db:migrate:status | awk '$1 == "down"'`
+
+      assert_includes pending_migrations, "down"
+
+      quietly { generator({}, ['--run_db_migrate=true']).run_db_migrate }
+
+      pending_migrations = `rails db:migrate:status | awk '$1 == "down"'`
+
+      assert_empty pending_migrations
+
+      `rails db:rollback`
+    end
+  end
 end

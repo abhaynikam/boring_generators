@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require 'boring_generators/generator_helper'
+
 module Boring
   module Vcr
     class InstallGenerator < Rails::Generators::Base
+      include BoringGenerators::GeneratorHelper
+      
       desc "Adds VCR to the application"
       source_root File.expand_path("templates", __dir__)
 
@@ -42,16 +46,15 @@ module Boring
 
       def add_vcr_gem
         say "Adding VCR gems to Gemfile", :green
-        # TODO: Use check_and_install_gem method when it is available
-        gem "vcr", group: :test
+        
+        check_and_install_gem "vcr", group: :test
       end
 
       def add_stubbing_library_gems
         say "Adding stubbing library gems to Gemfile", :green
 
         options[:stubbing_libraries].uniq.each do |stubbing_library|
-          # TODO: Use check_and_install_gem method when it is available
-          gem stubbing_library, group: :test
+          check_and_install_gem stubbing_library, group: :test
         end
       end
 
