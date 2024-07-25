@@ -1,0 +1,12 @@
+===============================================================================
+
+We've protected Sidekiq routes with Devise to ensure only authenticated users can access them.
+This is implemented in the following snippet located in the config/routes.rb file.
+```
+authenticate :user do
+  mount Sidekiq::Web => '/sidekiq'
+end
+```
+Please adjust it as necessary to suit your requirements.
+
+===============================================================================
