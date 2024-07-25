@@ -1,7 +1,12 @@
 # frozen_string_literal: true
+
+require 'boring_generators/generator_helper'
+
 module Boring
   module Webmock
     class InstallGenerator < Rails::Generators::Base
+      include BoringGenerators::GeneratorHelper
+      
       desc "Adds webmock gem to the application"
 
       SUPPORTED_TEST_FRAMEWORKS = %w[rspec minitest]
@@ -29,11 +34,7 @@ module Boring
       def add_webmock_gem
         say "Adding webmock gem", :green
 
-        gem "webmock"
-
-        Bundler.with_unbundled_env do
-          run "bundle install"
-        end
+        check_and_install_gem "webmock", group: :test
       end
 
       def configure_webmock
