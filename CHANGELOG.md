@@ -13,6 +13,7 @@
 * Adds Honeybadger generator. ([@mausamp][])
 * Adds Rails ERD generator. ([@mausamp][])
 * Adds Annotate Generator. ([@TheZero0-ctrl][])
+* Adds Devise JWT generator. ([@TheZero0-ctrl][])
 
 ## 0.13.0 (March 26th, 2024)
 * Adds Letter Opener generator. ([@coolprobn][])

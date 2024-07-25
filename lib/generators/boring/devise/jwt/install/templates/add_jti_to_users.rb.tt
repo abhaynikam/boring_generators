@@ -1,0 +1,6 @@
+class AddJtiTo<%= @model_class %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+  def change
+    add_column :<%= @model_db_table %>, :jti, :string, null: false
+    add_index :<%= @model_db_table %>, :jti, unique: true
+  end
+end
