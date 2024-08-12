@@ -97,6 +97,7 @@ The boring generator introduces following generators:
 - Install Rails ERD: `rails generate boring:rails_erd:install`
 - Install Annotate: `rails generate boring:annotate:install`
 - Install CanCanCan: `rails generate boring:cancancan:install`
+- Install Sidekiq: `rails generate boring:sidekiq:install`
 
 ## Screencasts
 
