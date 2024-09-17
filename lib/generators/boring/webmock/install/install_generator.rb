@@ -11,7 +11,7 @@ module Boring
 
       SUPPORTED_TEST_FRAMEWORKS = %w[rspec minitest]
 
-      # can't use "test_framework" option which would be a good naming for this because it's being used by Rails::Generator::Base. It's better not to have any conflict with the base class so prefixing with "app_" here
+      # can't use "test_framework" option which would be a good naming for this because it's being used by Rails::Generator::Base. Rails will override this value if we use test_framework so prefixing with "app_" here
       class_option :app_test_framework,
                    type: :string,
                    desc: "Tell us the framework you use for writing tests in your application. Supported options are #{SUPPORTED_TEST_FRAMEWORKS}",

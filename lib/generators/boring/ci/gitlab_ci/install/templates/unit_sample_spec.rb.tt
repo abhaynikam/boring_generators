@@ -1,0 +1,7 @@
+require "rails_helper"
+
+RSpec.describe("Sample", type: :model) do
+  it "tests the truth" do
+    expect(true).to be_truthy
+  end
+end

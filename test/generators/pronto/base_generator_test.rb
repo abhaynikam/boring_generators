@@ -17,7 +17,7 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_install_pronto_with_all_extension_gems
     Dir.chdir(app_path) do
-      quietly { run_generator  }
+      quietly { run_generator }
 
       assert_file "Gemfile" do |content|
         assert_match("pronto", content)
@@ -31,7 +31,9 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_brakeman_extension
     Dir.chdir(app_path) do
-      run_generator([destination_root, '--skip_extensions=brakeman'])
+      quietly do
+        run_generator([destination_root, "--skip_extensions=brakeman"])
+      end
 
       assert_file "Gemfile" do |content|
         assert_match("pronto", content)
@@ -45,7 +47,7 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_flay_extension
     Dir.chdir(app_path) do
-      quietly { run_generator([destination_root, '--skip_extensions=flay'])  }
+      quietly { run_generator([destination_root, "--skip_extensions=flay"]) }
 
       assert_file "Gemfile" do |content|
         assert_match("pronto", content)
@@ -59,7 +61,7 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_reek_extension
     Dir.chdir(app_path) do
-      quietly { run_generator([destination_root, '--skip_extensions=reek'])  }
+      quietly { run_generator([destination_root, "--skip_extensions=reek"]) }
 
       assert_file "Gemfile" do |content|
         assert_match("pronto", content)
@@ -73,7 +75,7 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_rubocop_extension
     Dir.chdir(app_path) do
-      quietly { run_generator([destination_root, '--skip_extensions=rubocop'])  }
+      quietly { run_generator([destination_root, "--skip_extensions=rubocop"]) }
 
       assert_file "Gemfile" do |content|
         assert_match("pronto", content)
@@ -87,7 +89,9 @@ class ProntoBaseGeneratorTest < Rails::Generators::TestCase
 
   def test_should_skip_multiple_extensions
     Dir.chdir(app_path) do
-      quietly { run_generator([destination_root, '--skip_extensions=reek', 'rubocop'])  }
+      quietly do
+        run_generator([destination_root, "--skip_extensions=reek", "rubocop"])
+      end
 
       assert_file "Gemfile" do |content|
         assert_match("pronto", content)

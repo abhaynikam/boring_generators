@@ -48,6 +48,12 @@ module Boring
         Bundler.with_unbundled_env do
           run "DISABLE_SPRING=1 bundle exec rails generate devise #{model_name}"
         end
+
+        # comment out user fixture because it fails the test due to email not being unique
+        if File.exist?("test/fixtures/users.yml")
+          comment_lines "test/fixtures/users.yml", /one: {}/
+          comment_lines "test/fixtures/users.yml", /two: {}/
+        end
       end
 
       def add_devise_authentication_filter_to_application_controller

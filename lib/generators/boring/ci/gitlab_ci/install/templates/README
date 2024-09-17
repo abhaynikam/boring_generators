@@ -1,0 +1,10 @@
+
+===============================================================================
+
+You need to update your project's Gitlab CI variable configurations for the Gitlab CI to work correctly. Please take care of the following:
+
+- Add your Gitlab personal access token under the variable `PRONTO_ACCESS_TOKEN`
+- Copy your application's environment variables under `env` variable in CI/CD
+- Add your Master Key required for decoding secret values under the variable `MASTER_KEY`
+
+===============================================================================

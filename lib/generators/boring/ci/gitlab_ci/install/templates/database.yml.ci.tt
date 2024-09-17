@@ -1,0 +1,21 @@
+test:
+<%- if @database == "postgresql" -%>
+  adapter: postgresql
+  encoding: unicode
+  host: postgres
+  username: test
+  password: test
+<%- elsif @database == "mysql" -%>
+  adapter: mysql2
+  encoding: utf8mb4
+  host: mysql
+  username: root
+  socket: /tmp/mysql.sock
+<%- else -%>
+  adapter: sqlite3
+  database: db/test.sqlite3
+<%- end -%>
+<%- unless @database == "sqlite3" -%>
+  database: ci_db
+<%- end -%>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
