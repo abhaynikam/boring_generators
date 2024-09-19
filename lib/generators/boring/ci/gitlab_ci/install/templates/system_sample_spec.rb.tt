@@ -1,0 +1,14 @@
+require "rails_helper"
+
+RSpec.describe "Sample System Test", type: :system, js: true do
+  it "checks if the system test is configured correctly" do
+    visit rails_health_check_path
+
+    # expect page body to have green background
+    expect(
+      page.evaluate_script(
+        "window.getComputedStyle(document.body).backgroundColor"
+      )
+    ).to eq("rgb(0, 128, 0)")
+  end
+end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boring_generators (0.13.0)
+    boring_generators (0.14.0)
       railties
 
 GEM
@@ -143,4 +143,4 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
 
 BUNDLED WITH
-   2.2.33
+   2.4.10

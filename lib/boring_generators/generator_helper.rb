@@ -3,9 +3,9 @@ module BoringGenerators
     include Rails::Generators::Actions
 
     def app_ruby_version
-      with_ruby_string = `grep "^ruby.*$" Gemfile` || `cat .ruby-version`
+      with_ruby_string = File.read("Gemfile")[/^ruby\s+["']?([\d.]+)["']?/] || File.read(".ruby-version").strip
 
-      # only keep 3.3.0
+      # only keep 3.3.0 from ruby-3.3.0
       with_ruby_string.gsub(/[^\d\.]/, "").squish
     end
 
@@ -29,6 +29,18 @@ module BoringGenerators
       end
 
       bundle_install
+    end
+
+    def inject_into_file_if_new(*args)
+      file_name, content_to_add, = args
+
+      file_content = File.read(file_name)
+
+      content_exists = file_content.include?(content_to_add)
+
+      return if content_exists
+
+      inject_into_file *args
     end
   end
 end

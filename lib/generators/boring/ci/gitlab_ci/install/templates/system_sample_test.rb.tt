@@ -1,0 +1,13 @@
+require "application_system_test_case"
+
+class SampleTest < ApplicationSystemTestCase
+  test "checks if the system test is configured correctly" do
+    visit rails_health_check_path
+
+    # assert page body has green background
+    assert_equal "rgb(0, 128, 0)",
+                 page.evaluate_script(
+                   "window.getComputedStyle(document.body).backgroundColor"
+                 )
+  end
+end

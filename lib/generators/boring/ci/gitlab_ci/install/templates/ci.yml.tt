@@ -1,0 +1,94 @@
+image: ruby:<%= @ruby_version %>
+
+variables:
+  MASTER_KEY: $MASTER_KEY
+
+cache:
+  paths:
+    - vendor/
+    <%- if File.exist?("package.json") -%>
+    - node_modules/
+    - yarn.lock
+    <%- end -%>
+
+stages:
+  - test
+
+.base_db:
+<%- if @database == "postgresql" -%>
+  services:
+    - postgres:latest
+<%- elsif @database == "mysql" -%>
+  services:
+    - mysql:latest
+<%- end -%>
+  variables:
+    RAILS_ENV: test
+  <%- if @database == "postgresql" -%>
+    POSTGRES_HOST_AUTH_METHOD: trust
+  <%- end -%>
+  <%- if @database == "mysql" -%>
+    MYSQL_ALLOW_EMPTY_PASSWORD: true
+  <%- end -%>
+  before_script:
+    - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)" --no-document
+    - bundle config set --local path 'vendor'
+    <%- if File.exist?("package.json") -%>
+    - apt-get update -qq && apt-get install -y -qq nodejs
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+    - yarn install --pure-lockfile
+    <%- end -%>
+    <%- if @database == "sqlite3" -%>
+    - apt-get update && apt-get install --no-install-recommends -y sqlite3
+    <%- end -%>
+    - apt-get update && apt-get install --no-install-recommends -y cmake
+    - bundle install --jobs $(nproc)
+    - cp config/database.yml.ci config/database.yml
+    <%- if @environment_variable_manager == "dotenv" -%>
+    - cat $env > .env
+    <%- elsif @environment_variable_manager == "figjam" -%>
+    - cat $env > config/application.yml
+    <%- end -%>
+    - bundle exec rails db:test:prepare
+
+unit_and_integration_tests:
+  extends: .base_db
+  stage: test
+  only:
+    - merge_requests
+  script:
+  <%- if @app_test_framework == "rspec" -%>
+    - bundle exec rspec --exclude-pattern "spec/system/**/*.rb"
+  <%- else -%>
+    - bundle exec rails test
+  <%- end -%>
+
+system_tests:
+  extends: .base_db
+  stage: test
+  services:
+    - name: selenium/standalone-chrome:latest
+      alias: selenium
+  <%- if @database == "postgresql" -%>
+    - postgres:latest
+  <%- elsif @database == "mysql" -%>
+    - mysql:latest
+  <%- end -%>
+  variables:
+    RAILS_ENV: test
+    SELENIUM_REMOTE_URL: http://selenium:4444/wd/hub
+  only:
+    - merge_requests
+  script:
+  <%- if @app_test_framework == "rspec" -%>
+    - bundle exec rspec spec/system
+  <%- else -%>
+    - bundle exec rails test:system
+  <%- end -%>
+  artifacts:
+    when: on_failure
+    paths:
+      - log/test.log
+      - tmp/screenshots/
+    expire_in: 1 week
