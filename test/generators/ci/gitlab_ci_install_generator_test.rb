@@ -89,8 +89,7 @@ class GitlabCiInstallGeneratorTest < Rails::Generators::TestCase
       assert_file("config/database.yml.ci") do |content|
         assert_match(/adapter: postgresql/, content)
         refute_match(%r{database: db/test.sqlite3}, content)
-        assert_match(/username: test/, content)
-        assert_match(/password: test/, content)
+        assert_match(/username: postgres/, content)
       end
     end
   end

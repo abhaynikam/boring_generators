@@ -1,8 +1,9 @@
 require "vcr"
 
 VCR.configure do |c|
-  c.cassette_library_dir = "spec/cassettes"
+  c.cassette_library_dir = "spec/vcr_cassettes"
   c.hook_into <%= @stubbing_libraries %>
   c.configure_rspec_metadata!
   c.ignore_localhost = true
+  c.allow_http_connections_when_no_cassette = true
 end

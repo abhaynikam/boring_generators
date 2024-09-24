@@ -3,8 +3,7 @@ test:
   adapter: postgresql
   encoding: unicode
   host: postgres
-  username: test
-  password: test
+  username: postgres
 <%- elsif @database == "mysql" -%>
   adapter: mysql2
   encoding: utf8mb4
@@ -18,4 +17,4 @@ test:
 <%- unless @database == "sqlite3" -%>
   database: ci_db
 <%- end -%>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
