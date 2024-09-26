@@ -74,8 +74,11 @@ module Boring
             def setup
               Capybara.server_host = "0.0.0.0" # bind to all interfaces
               Capybara.server_port = 3000
-              ip = Socket.ip_address_list.detect(&:ipv4_private?).ip_address
-              Capybara.app_host = "http://\#{ip}:\#{Capybara.server_port}" if ENV["SELENIUM_REMOTE_URL"].present?
+
+              if ENV["SELENIUM_REMOTE_URL"].present?
+                ip = Socket.ip_address_list.detect(&:ipv4_private?).ip_address
+                Capybara.app_host = "http://\#{ip}:\#{Capybara.server_port}"
+              end
 
               super
             end

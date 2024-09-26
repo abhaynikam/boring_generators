@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'boring_generators/generator_helper'
+require "boring_generators/generator_helper"
 
 module Boring
   module Vcr
     class InstallGenerator < Rails::Generators::Base
       include BoringGenerators::GeneratorHelper
-      
+
       desc "Adds VCR to the application"
       source_root File.expand_path("templates", __dir__)
 
@@ -46,7 +46,7 @@ module Boring
 
       def add_vcr_gem
         say "Adding VCR gems to Gemfile", :green
-        
+
         check_and_install_gem "vcr", group: :test
       end
 
@@ -83,9 +83,10 @@ module Boring
           require "vcr"
 
           VCR.configure do |c|
-            c.cassette_library_dir = "test/vcr"
+            c.cassette_library_dir = "test/vcr_cassettes"
             c.hook_into #{format_stubbing_libraries}
             c.ignore_localhost = true
+            c.allow_http_connections_when_no_cassette = true
           end
         RUBY
 
