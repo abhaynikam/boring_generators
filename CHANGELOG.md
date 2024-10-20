@@ -3,6 +3,7 @@
 ## master (unreleased)
 
 * Adds Gitlab CI generator. ([@coolprobn][])
+* Fixed callback method name for Google OAuth2 Omniauth ([@coezbek][])
 
 ## 0.14.0 (Aug 4th, 2024)
 
