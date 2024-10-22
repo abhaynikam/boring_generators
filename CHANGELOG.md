@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.15.0 (Aug 4th, 2024)
+
 * Adds Gitlab CI generator. ([@coolprobn][])
 
 ## 0.14.0 (Aug 4th, 2024)
