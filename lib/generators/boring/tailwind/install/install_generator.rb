@@ -1,74 +1,24 @@
 # frozen_string_literal: true
 
+require 'boring_generators/generator_helper'
+
 module Boring
   module Tailwind
     class InstallGenerator < Rails::Generators::Base
-      desc "Adds Tailwind CSS to the application"
-      source_root File.expand_path("templates", __dir__)
+      include BoringGenerators::GeneratorHelper
 
-      class_option :skip_tailwind_init_full, type: :boolean, aliases: "-sif",
-                                             desc: "Skip running tailwindcss init with --full option"
+      desc "Adds Tailwind CSS to the application"
 
       def add_tailwind_package
-        say "Adding tailwind package", :green
-        run "yarn add tailwindcss@latest postcss@latest autoprefixer@latest"
+        say "Adding the gem for Tailwind CSS", :green
+        
+        check_and_install_gem("tailwindcss-rails")
       end
 
       def create_tailwind_config
-        say "Initailizing tailwind configuration", :green
-        if options[:skip_tailwind_init_full]
-          run "yarn tailwindcss init"
-        else
-          run "yarn tailwindcss init --full"
-        end
-      end
+        say "Initializing Tailwind CSS configurations", :green
 
-      def include_tailwind_to_postcss_config
-        insert_into_file "postcss.config.js", <<~RUBY, after: /plugins:\s+\[\n/
-          \t\trequire('tailwindcss'),
-        RUBY
-      end
-
-      def add_or_import_stylesheet_for_tailwind
-        if File.exist?("app/javascript/stylesheets/application.scss")
-          say "Add TailwindCSS imports to the application.scss", :green
-          stylesheet_tailwind_imports = <<~RUBY
-            \n
-            @import "tailwindcss/base";
-            @import "tailwindcss/components";
-            @import "tailwindcss/utilities";
-          RUBY
-
-          append_to_file "app/javascript/stylesheets/application.scss", stylesheet_tailwind_imports
-        else
-          say "Copying application.scss with Tailwind imports", :green
-          template("application.scss", "app/javascript/stylesheets/application.scss")
-        end
-      end
-
-      def insert_stylesheet_in_the_application
-        if File.exist?("app/javascript/packs/application.js")
-          stylesheet_tailwind_imports = <<~RUBY
-            \n
-            import "stylesheets/application"
-          RUBY
-
-          append_to_file "app/javascript/packs/application.js", stylesheet_tailwind_imports
-        else
-          say <<~WARNING, :red
-            ERROR: Looks like the webpacker installation is incomplete. Could not find application.js in app/javascript/packs.
-          WARNING
-        end
-      end
-
-      def insert_stylesheet_packs_tag
-        insert_into_file "app/views/layouts/application.html.erb", <<~RUBY, after: /stylesheet_link_tag.*\n/
-          \t\t<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-        RUBY
-      end
-
-      def show_readme
-        readme "README"
+        run "bundle exec rails tailwindcss:install"
       end
     end
   end
