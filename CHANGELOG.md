@@ -2,7 +2,9 @@
 
 ## master (unreleased)
 
-## 0.15.0 (Aug 4th, 2024)
+* Update Tailwind generator to use tailwindcss-rails gem instead of manually installing everything via npm
+
+## 0.15.0 (Oct 22nd, 2024)
 
 * Adds Gitlab CI generator. ([@coolprobn][])
 
